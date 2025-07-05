@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>Wednesday Store | متجر الأربعاء</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --main-blue: #23272e;
+      --main-gold: #ffd700;
+      --main-white: #fff;
+      --main-gray: #f8f9fa;
+      --main-dark: #222;
+      --accent: #e74c3c;
+      --success: #27ae60;
+      --radius: 14px;
+      --transition: 0.2s;
+      --font: 'Cairo', Arial, sans-serif;
+    }
+    body {
+      font-family: var(--font);
+      background: var(--main-gray);
+      margin: 0;
+      color: var(--main-dark);
+      direction: rtl;
+      min-height: 100vh;
+    }
+    [lang="en"] body {
+      direction: ltr;
+    }
+    header {
+      background: var(--main-blue);
+      color: var(--main-white);
+      padding: 1rem 0 1rem 0;
+      box-shadow: 0 2px 12px rgba(35,39,46,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.7rem;
+      font-weight: bold;
+      color: var(--main-blue);
+      letter-spacing: 1px;
+      margin: 0 0 0 16px;
+      background: var(--main-white);
+      border-radius: 8px;
+      padding: 2px 18px 2px 6px;
+    }
+    .logo svg {
+      width: 38px; height: 38px;
+      background: var(--main-gold);
+      border-radius: 50%;
+      padding: 6px;
+      margin-left: 4px;
+    }
+    nav {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+    nav a {
+      color: var(--main-white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.05rem;
+      padding: 8px 18px;
+      border-radius: 22px;
+      transition: background var(--transition);
+    }
+    nav a.active, nav a:hover {
+      background: var(--main-gold);
+      color: var(--main-blue);
+    }
+    .lang-switch {
+      background: none;
+      border: none;
+      color: var(--main-gold);
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-right: 12px;
+      margin-left: 12px;
+    }
+    .cart-btn {
+      background: var(--main-white);
+      color: var(--main-blue);
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      position: relative;
+      margin-left: 18px;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .cart-btn .cart-count {
+      position: absolute;
+      top: 5px;
+      left: 8px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    .social-links {
+      display: flex;
+      gap: 10px;
+      margin-right: 10px;
+    }
+    .social-links a {
+      color: #fff;
+      font-size: 1.3rem;
+      transition: color 0.2s;
+    }
+    .social-links a:hover {
+      color: var(--main-gold);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 24px 16px; }
+    .section-title {
+      font-size: 1.5rem;
+      color: var(--main-blue);
+      margin-bottom: 24px;
+      border-right: 6px solid var(--main-gold);
+      padding-right: 12px;
+      font-weight: bold;
+    }
+    .categories-list { display: flex; gap: 12px; margin-bottom: 18px; flex-wrap: wrap;}
+    .categories-list button {
+      background: var(--main-blue);
+      color: #fff;
+      border: none;
+      border-radius: 18px;
+      padding: 8px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .categories-list button.active, .categories-list button:hover {
+      background: var(--main-gold);
+      color: var(--main-blue);
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 22px;
+      margin-bottom: 32px;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(35,39,46,0.07);
+      padding: 18px;
+      text-align: center;
+      position: relative;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .product-card img {
+      width: 100px; height: 100px; object-fit: cover; border-radius: 8px; margin-bottom: 8px;
+      border: 1px solid #eee;
+    }
+    .product-card .cat {
+      background: var(--main-gray);
+      color: var(--main-blue);
+      border-radius: 12px;
+      padding: 4px 14px;
+      display: inline-block;
+      font-size: 0.95rem;
+      margin-bottom: 5px;
+    }
+    .product-card .name {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--main-blue);
+      margin-bottom: 4px;
+    }
+    .product-card .price {
+      color: #25d366;
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+      display: inline-block;
+    }
+    .product-card .old-price {
+      color: #888;
+      text-decoration: line-through;
+      font-size: 1rem;
+      margin-left: 8px;
+      display: inline-block;
+    }
+    .product-card .discount-badge {
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      padding: 2px 10px;
+      font-size: 0.95rem;
+      display: inline-block;
+      margin-right: 6px;
+      margin-bottom: 3px;
+    }
+    .product-card .offer-badge {
+      background: var(--main-gold);
+      color: var(--main-blue);
+      border-radius: 8px;
+      padding: 2px 10px;
+      font-size: 0.93rem;
+      display: inline-block;
+      margin-bottom: 3px;
+      margin-right: 6px;
+    }
+    .product-card .desc {
+      color: #555;
+      font-size: 0.98rem;
+      margin-bottom: 8px;
+      min-height: 36px;
+    }
+    .product-card button {
+      background: var(--main-blue);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 22px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background var(--transition);
+    }
+    .product-card button:hover { background: var(--main-gold); color: var(--main-blue);}
+    /* Responsive */
+    @media (max-width: 900px) {
+      .products-grid { grid-template-columns: repeat(auto-fit,minmax(170px,1fr)); }
+      .container { padding: 12px 2px;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#fff"/><rect x="14" y="14" width="20" height="20" rx="6" fill="#23272e"/><rect x="20" y="32" width="8" height="3" rx="1.5" fill="#ffd700"/></svg>
+      <span id="logoText">Wednesday Store</span>
+    </div>
+    <nav>
+      <a href="#" class="active" id="navHome"></a>
+      <a href="#" id="navProducts"></a>
+      <a href="#" id="navOffers"></a>
+      <a href="#" id="navAbout"></a>
+      <a href="#" id="navContact"></a>
+    </nav>
+    <div class="social-links">
+      <a href="https://www.facebook.com/profile.php?id=61578187973897&sk=about" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/wednesdaystore2025/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/201013154821" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <button class="lang-switch" onclick="switchLang()"></button>
+    <button class="cart-btn" onclick="showCart()">
+      <i class="fas fa-shopping-bag"></i>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </header>
+  <div class="container" id="mainContent"></div>
+  <footer>
+    <div style="text-align:center;padding:24px 0;color:#888;">
+      Wednesday Store &copy; 2025 - All rights reserved
+    </div>
+  </footer>
+  <script>
+    // نظام ترجمة شامل
+    const texts = {
+      ar: {
+        home: "الرئيسية",
+        products: "المنتجات",
+        offers: "العروض",
+        about: "عن المتجر",
+        contact: "اتصل بنا",
+        cart: "سلة التسوق",
+        welcome: "مرحبا بك في متجر الأربعاء",
+        discover: "اكتشف مجموعة متنوعة من المنتجات عالية الجودة",
+        ourProducts: "منتجاتنا المتنوعة",
+        latestOffers: "أحدث العروض",
+        wednesdayOffers: "عروض الأربعاء",
+        electronics: "إلكترونيات",
+        covers: "كفرات",
+        gaming: "جيمنج",
+        mobile: "جوال",
+        all: "الكل",
+        addToCart: "أضف للسلة",
+        checkout: "إتمام الشراء",
+        confirmOrder: "تأكيد الطلب",
+        total: "الإجمالي",
+        emptyCart: "السلة فارغة.",
+        remove: "حذف",
+        clearCart: "إفراغ السلة",
+        fullName: "الاسم الكامل:",
+        phone: "رقم الهاتف:",
+        address: "العنوان:",
+        payment: "طريقة الدفع:",
+        cod: "الدفع عند الاستلام",
+        orderSent: "تم إرسال الطلب بنجاح! سيتم التواصل معك قريبًا.",
+        aboutText: "متجر الأربعاء هو متجرك الموثوق لشراء أفضل إكسسوارات الموبايل والعروض الحصرية.",
+        contactText: "للتواصل:",
+        adminPanel: "لوحة تحكم الإدارة",
+        adminPass: "كلمة مرور الإدارة",
+        login: "دخول",
+        changePass: "تغيير كلمة المرور",
+        addProduct: "إضافة منتج جديد",
+        edit: "تعديل",
+        delete: "حذف",
+        addCategory: "إضافة تصنيف",
+        confirmDelete: "تأكيد حذف المنتج؟",
+        confirmCatDelete: "تأكيد حذف التصنيف؟",
+        newPass: "كلمة المرور الجديدة:",
+        passChanged: "تم تغيير كلمة المرور!",
+        setPass: "تم تعيين كلمة المرور بنجاح! أعد الدخول.",
+        wrongPass: "كلمة مرور خاطئة!",
+        noProducts: "لا توجد منتجات في هذا القسم حالياً.",
+        facebook: "فيسبوك",
+        instagram: "إنستجرام",
+        whatsapp: "واتساب"
+      },
+      en: {
+        home: "Home",
+        products: "Products",
+        offers: "Offers",
+        about: "About",
+        contact: "Contact Us",
+        cart: "Cart",
+        welcome: "Welcome to Wednesday Store",
+        discover: "Discover a variety of high-quality products",
+        ourProducts: "Our Diverse Products",
+        latestOffers: "Latest Offers",
+        wednesdayOffers: "Wednesday Offers",
+        electronics: "Electronics",
+        covers: "Covers",
+        gaming: "Gaming",
+        mobile: "Mobile",
+        all: "All",
+        addToCart: "Add to Cart",
+        checkout: "Checkout",
+        confirmOrder: "Confirm Order",
+        total: "Total",
+        emptyCart: "Cart is empty.",
+        remove: "Remove",
+        clearCart: "Clear Cart",
+        fullName: "Full Name:",
+        phone: "Phone Number:",
+        address: "Address:",
+        payment: "Payment Method:",
+        cod: "Cash on Delivery",
+        orderSent: "Order sent successfully! We will contact you soon.",
+        aboutText: "Wednesday Store is your trusted shop for the best mobile accessories and exclusive offers.",
+        contactText: "Contact:",
+        adminPanel: "Admin Dashboard",
+        adminPass: "Admin Password",
+        login: "Login",
+        changePass: "Change Password",
+        addProduct: "Add New Product",
+        edit: "Edit",
+        delete: "Delete",
+        addCategory: "Add Category",
+        confirmDelete: "Confirm delete product?",
+        confirmCatDelete: "Confirm delete category?",
+        newPass: "New Password:",
+        passChanged: "Password changed!",
+        setPass: "Password set! Please login again.",
+        wrongPass: "Wrong password!",
+        noProducts: "No products in this category yet.",
+        facebook: "Facebook",
+        instagram: "Instagram",
+        whatsapp: "WhatsApp"
+      }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'ar';
+    function switchLang() {
+      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+      localStorage.setItem('lang', currentLang);
+      document.documentElement.lang = currentLang;
+      document.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+      renderAll();
+    }
+
+    // التصنيفات
+    let categories = [
+      {ar: texts.ar.all, en: texts.en.all},
+      {ar: texts.ar.latestOffers, en: texts.en.latestOffers},
+      {ar: texts.ar.wednesdayOffers, en: texts.en.wednesdayOffers},
+      {ar: texts.ar.electronics, en: texts.en.electronics},
+      {ar: texts.ar.covers, en: texts.en.covers},
+      {ar: texts.ar.gaming, en: texts.en.gaming},
+      {ar: texts.ar.mobile, en: texts.en.mobile}
+    ];
+
+    // المنتجات الافتراضية
+    let products = JSON.parse(localStorage.getItem('ws_products') || '[]');
+    if (products.length === 0) {
+      products = [
+        {
+          name: {ar: "جراب آيفون 14", en: "iPhone 14 Case"},
+          desc: {ar: "جراب حماية عالي الجودة.", en: "High quality protective case."},
+          cat: texts.ar.covers,
+          price: 200,
+          sale: 150,
+          onSale: true,
+          latestOffer: true,
+          wednesdayOffer: false,
+          img: "",
+        },
+        {
+          name: {ar: "سماعة بلوتوث", en: "Bluetooth Headset"},
+          desc: {ar: "صوت نقي وتصميم مريح.", en: "Clear sound and comfortable design."},
+          cat: texts.ar.electronics,
+          price: 350,
+          sale: 350,
+          onSale: false,
+          latestOffer: false,
+          wednesdayOffer: true,
+          img: "",
+        }
+      ];
+      localStorage.setItem('ws_products', JSON.stringify(products));
+    }
+
+    let cart = JSON.parse(localStorage.getItem('ws_cart') || '[]');
+
+    function updateCartCount() {
+      document.getElementById('cartCount').textContent = cart.length;
+    }
+
+    function renderProducts(cat = texts.ar.all) {
+      let filtered = cat === texts.ar.all ? products : products.filter(p => {
+        if (cat === texts.ar.latestOffers) return p.onSale && p.latestOffer;
+        if (cat === texts.ar.wednesdayOffers) return p.wednesdayOffer;
+        return p.cat === cat;
+      });
+      let html = `<div class="section-title">${texts[currentLang].ourProducts}</div>
+      <div class="categories-list">` +
+        categories.map(c =>
+          `<button onclick="renderProducts('${c.ar}')" class="${c.ar === cat ? 'active' : ''}">${c[currentLang]}</button>`
+        ).join('') +
+      `</div><div class="products-grid">`;
+      if (!filtered.length) {
+        html += `<div style="color:#888;font-size:1.1rem;">${texts[currentLang].noProducts}</div>`;
+      } else {
+        html += filtered.map((p, i) => `
+          <div class="product-card">
+            ${(p.latestOffer ? `<span class="offer-badge">${texts[currentLang].latestOffers}</span>` : "")}
+            ${(p.wednesdayOffer ? `<span class="offer-badge">${texts[currentLang].wednesdayOffers}</span>` : "")}
+            ${(p.onSale && p.price > p.sale ? `<span class="discount-badge">-${Math.round(100*(p.price-p.sale)/p.price)}%</span>` : "")}
+            ${p.img ? `<img src="${p.img}">` : `<img src="https://via.placeholder.com/100x100?text=No+Image">`}
+            <div class="cat">${p.cat}</div>
+            <div class="name">${p.name[currentLang]}</div>
+            <div>
+              ${p.onSale && p.price > p.sale ? `<span class="old-price">${p.price} ${currentLang === 'ar' ? "جنيه" : "EGP"}</span>` : ""}
+              <span class="price">${p.sale} ${currentLang === 'ar' ? "جنيه" : "EGP"}</span>
+            </div>
+            <div class="desc">${p.desc[currentLang]}</div>
+            <button onclick="addToCart(${i})">${texts[currentLang].addToCart}</button>
+          </div>
+        `).join('');
+      }
+      html += `</div>`;
+      document.getElementById('mainContent').innerHTML = html;
+    }
+
+    function addToCart(idx) {
+      cart.push(products[idx]);
+      localStorage.setItem('ws_cart', JSON.stringify(cart));
+      updateCartCount();
+      alert(currentLang === 'ar' ? "تمت إضافة المنتج للسلة!" : "Product added to cart!");
+    }
+
+    function showCart() {
+      let html = `<div class="section-title">${texts[currentLang].cart}</div>`;
+      if (!cart.length) {
+        html += `<div style="color:#888;font-size:1.1rem;">${texts[currentLang].emptyCart}</div>`;
+      } else {
+        let total = cart.reduce((sum, p) => sum + (p.sale || p.price), 0);
+        html += `<ul style="list-style:none;padding:0;">` +
+          cart.map((p,i) => `<li style="margin-bottom:8px;">
+            <b>${p.name[currentLang]}</b> - ${p.sale || p.price} ${currentLang === 'ar' ? "جنيه" : "EGP"}
+            <button onclick="removeFromCart(${i})" style="background:#e74c3c;color:#fff;border:none;border-radius:6px;padding:2px 10px;margin-right:8px;cursor:pointer;">${texts[currentLang].remove}</button>
+          </li>`).join('') +
+        `</ul>
+        <div style="font-weight:bold;margin:12px 0;">${texts[currentLang].total}: ${total} ${currentLang === 'ar' ? "جنيه" : "EGP"}</div>
+        <button onclick="checkout()" style="background:var(--main-gold);color:var(--main-blue);padding:10px 24px;border:none;border-radius:8px;font-size:1.1rem;font-weight:bold;cursor:pointer;">${texts[currentLang].checkout}</button>
+        <button onclick="clearCart()" style="background:#888;color:#fff;padding:10px 24px;border:none;border-radius:8px;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-right:12px;">${texts[currentLang].clearCart}</button>
+        `;
+      }
+      document.getElementById('mainContent').innerHTML = html;
+    }
+    function removeFromCart(i) {
+      cart.splice(i,1);
+      localStorage.setItem('ws_cart', JSON.stringify(cart));
+      updateCartCount();
+      showCart();
+    }
+    function clearCart() {
+      cart = [];
+      localStorage.setItem('ws_cart', JSON.stringify(cart));
+      updateCartCount();
+      showCart();
+    }
+
+    function checkout() {
+      let html = `<div class="section-title">${texts[currentLang].checkout}</div>
+      <form onsubmit="submitOrder(event)">
+        <label>${texts[currentLang].fullName}</label>
+        <input required id="cname" style="width:100%;padding:8px;margin-bottom:10px;">
+        <label>${texts[currentLang].phone}</label>
+        <input required id="cphone" style="width:100%;padding:8px;margin-bottom:10px;">
+        <label>${texts[currentLang].address}</label>
+        <input required id="caddr" style="width:100%;padding:8px;margin-bottom:10px;">
+        <label>${texts[currentLang].payment}</label>
+        <select id="cpay" style="width:100%;padding:8px;margin-bottom:10px;">
+          <option value="cod">${texts[currentLang].cod}</option>
+        </select>
+        <button type="submit" style="background:var(--success);color:#fff;padding:10px 24px;border:none;border-radius:8px;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-top:8px;">${texts[currentLang].confirmOrder}</button>
+      </form>`;
+      document.getElementById('mainContent').innerHTML = html;
+    }
+    function submitOrder(e) {
+      e.preventDefault();
+      clearCart();
+      alert(texts[currentLang].orderSent);
+      renderProducts();
+    }
+
+    // لوحة تحكم الإدارة (رابط سري: /ws-admin)
+    if (window.location.pathname.endsWith('/ws-admin')) {
+      document.body.innerHTML = `<div style="max-width:400px;margin:80px auto;background:#fff;padding:32px 24px;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+        <h2 style="color:#23272e;text-align:center;">${texts[currentLang].adminPanel}</h2>
+        <form onsubmit="return adminLogin(event)">
+          <input type="password" id="adminPass" placeholder="${texts[currentLang].adminPass}" required style="width:100%;padding:10px;margin-bottom:16px;border-radius:6px;border:1px solid #ccc;">
+          <button type="submit" style="background:#ffd700;color:#23272e;padding:10px 28px;border:none;border-radius:8px;font-size:1.1rem;">${texts[currentLang].login}</button>
+        </form>
+      </div>`;
+      window.adminLogin = function(e) {
+        e.preventDefault();
+        let pass = localStorage.getItem('ws_admin_pass');
+        let input = document.getElementById('adminPass').value;
+        if (!pass) {
+          localStorage.setItem('ws_admin_pass', input);
+          alert(texts[currentLang].setPass);
+          location.reload();
+        } else if (input === pass) {
+          showAdminPanel();
+        } else {
+          alert(texts[currentLang].wrongPass);
+        }
+        return false;
+      }
+      function showAdminPanel() {
+        document.body.innerHTML = `<div style="max-width:900px;margin:40px auto;background:#fff;padding:32px 24px;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+          <h2 style="color:#23272e;text-align:center;">${texts[currentLang].adminPanel}</h2>
+          <button onclick="changeAdminPass()" style="float:left;background:#e74c3c;color:#fff;padding:6px 18px;border:none;border-radius:8px;">${texts[currentLang].changePass}</button>
+          <hr style="margin:18px 0;">
+          <h3>${texts[currentLang].products}</h3>
+          <button onclick="addProduct()" style="background:#25d366;color:#fff;padding:8px 18px;border:none;border-radius:8px;margin-bottom:10px;">${texts[currentLang].addProduct}</button>
+          <table border="1" width="100%" style="border-collapse:collapse;">
+            <tr><th>${texts[currentLang].products}</th><th>${texts[currentLang].about}</th><th>${texts[currentLang].offers}</th><th>${texts[currentLang].delete}</th></tr>
+            ${products.map((p,i)=>`<tr>
+              <td>${p.name.ar}<br><span style="color:#888">${p.name.en}</span></td>
+              <td>${p.desc.ar}<br><span style="color:#888">${p.desc.en}</span></td>
+              <td>${p.cat}</td>
+              <td>
+                <button onclick="editProduct(${i})">${texts[currentLang].edit}</button>
+                <button onclick="deleteProduct(${i})" style="background:#e74c3c;color:#fff;">${texts[currentLang].delete}</button>
+              </td>
+            </tr>`).join('')}
+          </table>
+          <h3>${texts[currentLang].offers}</h3>
+          <ul>
+            ${categories.slice(3).map((c,i)=>`<li>${c.ar} / ${c.en} <button onclick="deleteCat(${i+3})" style="background:#e74c3c;color:#fff;border:none;border-radius:6px;padding:2px 10px;margin-right:8px;">${texts[currentLang].delete}</button></li>`).join('')}
+          </ul>
+          <button onclick="addCategory()" style="background:#23272e;color:#fff;padding:6px 18px;border:none;border-radius:8px;">${texts[currentLang].addCategory}</button>
+        </div>`;
+        window.editProduct = function(idx) {
+          let p = products[idx];
+          let f = prompt("تعديل المنتج (الاسم بالعربية, الاسم بالإنجليزية, الوصف بالعربية, الوصف بالإنجليزية, التصنيف, السعر, سعر العرض, أحدث العروض 1/0, عروض الأربعاء 1/0)", 
+            [p.name.ar, p.name.en, p.desc.ar, p.desc.en, p.cat, p.price, p.sale, p.latestOffer?1:0, p.wednesdayOffer?1:0].join(','));
+          if (!f) return;
+          let arr = f.split(',');
+          products[idx] = {
+            name: {ar: arr[0], en: arr[1]},
+            desc: {ar: arr[2], en: arr[3]},
+            cat: arr[4],
+            price: +arr[5],
+            sale: +arr[6],
+            onSale: +arr[6]<+arr[5],
+            latestOffer: arr[7]=='1',
+            wednesdayOffer: arr[8]=='1',
+            img: p.img
+          };
+          localStorage.setItem('ws_products', JSON.stringify(products));
+          showAdminPanel();
+        }
+        window.deleteProduct = function(idx) {
+          if (confirm(texts[currentLang].confirmDelete)) {
+            products.splice(idx,1);
+            localStorage.setItem('ws_products', JSON.stringify(products));
+            showAdminPanel();
+          }
+        }
+        window.addProduct = function() {
+          let f = prompt("إضافة منتج (الاسم بالعربية, الاسم بالإنجليزية, الوصف بالعربية, الوصف بالإنجليزية, التصنيف, السعر, سعر العرض, أحدث العروض 1/0, عروض الأربعاء 1/0)", 
+            ",,,,,,,,");
+          if (!f) return;
+          let arr = f.split(',');
+          products.push({
+            name: {ar: arr[0], en: arr[1]},
+            desc: {ar: arr[2], en: arr[3]},
+            cat: arr[4],
+            price: +arr[5],
+            sale: +arr[6],
+            onSale: +arr[6]<+arr[5],
+            latestOffer: arr[7]=='1',
+            wednesdayOffer: arr[8]=='1',
+            img: ""
+          });
+          localStorage.setItem('ws_products', JSON.stringify(products));
+          showAdminPanel();
+        }
+        window.deleteCat = function(idx) {
+          if(confirm(texts[currentLang].confirmCatDelete)) {
+            categories.splice(idx,1);
+            showAdminPanel();
+          }
+        }
+        window.addCategory = function() {
+          let ar = prompt("اسم التصنيف بالعربية:");
+          let en = prompt("اسم التصنيف بالإنجليزية:");
+          if (ar && en) {
+            categories.push({ar,en});
+            showAdminPanel();
+          }
+        }
+        window.changeAdminPass = function() {
+          let np = prompt(texts[currentLang].newPass);
+          if (np) {
+            localStorage.setItem('ws_admin_pass', np);
+            alert(texts[currentLang].passChanged);
+          }
+        }
+      }
+    }
+
+    function renderAll() {
+      // تحديث النصوص في الهيدر
+      document.getElementById('navHome').textContent = texts[currentLang].home;
+      document.getElementById('navProducts').textContent = texts[currentLang].products;
+      document.getElementById('navOffers').textContent = texts[currentLang].offers;
+      document.getElementById('navAbout').textContent = texts[currentLang].about;
+      document.getElementById('navContact').textContent = texts[currentLang].contact;
+      document.querySelector('.lang-switch').textContent = currentLang === 'ar' ? "English" : "العربية";
+      updateCartCount();
+      renderProducts();
+    }
+    renderAll();
+
+    document.getElementById('navHome').onclick = function(){renderProducts(); return false;}
+    document.getElementById('navProducts').onclick = function(){renderProducts(); return false;}
+    document.getElementById('navOffers').onclick = function(){renderProducts(texts.ar.latestOffers); return false;}
+    document.getElementById('navAbout').onclick = function(){
+      document.getElementById('mainContent').innerHTML = `<div class="section-title">${texts[currentLang].about}</div>
+      <div style="font-size:1.1rem;">${texts[currentLang].aboutText}</div>`;
+      return false;
+    }
+    document.getElementById('navContact').onclick = function(){
+      document.getElementById('mainContent').innerHTML = `<div class="section-title">${texts[currentLang].contact}</div>
+      <div style="font-size:1.1rem;">
+        <p><i class="fab fa-whatsapp"></i> ${texts[currentLang].whatsapp}: <a href="https://wa.me/201013154821" target="_blank">201013154821</a></p>
+        <p><i class="fab fa-facebook-f"></i> ${texts[currentLang].facebook}: <a href="https://www.facebook.com/profile.php?id=61578187973897&sk=about" target="_blank">${texts[currentLang].facebook}</a></p>
+        <p><i class="fab fa-instagram"></i> ${texts[currentLang].instagram}: <a href="https://www.instagram.com/wednesdaystore2025/" target="_blank">@wednesdaystore2025</a></p>
+      </div>`;
+      return false;
+    }
+  </script>
+</body>
+</html>
