@@ -47,7 +47,7 @@ select {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0; /* إزالة الحواف تماماً */
+    padding: 0;
 }
 
 /* الهيدر محسّن ومصغّر */
@@ -147,6 +147,75 @@ select {
 .search-btn:hover {
     background: rgba(255,255,255,0.3);
     transform: translateY(-50%) scale(1.1);
+}
+
+/* نتائج البحث - موحدة مع المنتجات */
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+.search-results.show {
+    display: block;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    min-height: 80px;
+}
+
+.search-result-item:hover {
+    background-color: #f8f9fa;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-left: 0.6rem;
+    flex-shrink: 0;
+}
+
+.search-result-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.search-result-name {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.2rem;
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.search-result-price {
+    font-size: 0.85rem;
+    color: #667eea;
+    font-weight: bold;
 }
 
 /* أيقونات التواصل محسّنة ومصغّرة */
@@ -306,7 +375,7 @@ select {
     opacity: 0.8;
 }
 
-/* المنتجات محسّنة ومصغّرة - موحدة للجميع */
+/* المنتجات محسّنة ومصغّرة مع تقليل المسافات الجانبية */
 .products-section {
     padding: 1.2rem 0;
     background: #f8f9fa;
@@ -316,12 +385,12 @@ select {
     background: white;
 }
 
-/* توحيد شبكة المنتجات للقسمين */
+/* توحيد شبكة المنتجات مع تقليل المسافات */
 .products-grid,
 #featuredProductsGrid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 0.8rem;
+    gap: 0.4rem; /* تم تقليل من 0.8rem إلى 0.4rem */
     margin-top: 1rem;
 }
 
@@ -332,7 +401,7 @@ select {
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     transition: all 0.3s ease;
     position: relative;
-    padding: 0.8rem;
+    padding: 0.5rem; /* تم تقليل من 0.8rem إلى 0.5rem */
 }
 
 .product-card:hover {
@@ -734,7 +803,7 @@ select {
 /* تحسينات الموبايل المتقدمة */
 @media (max-width: 768px) {
     .container {
-        padding: 0; /* إزالة الحواف تماماً */
+        padding: 0;
     }
 
     .header {
@@ -840,11 +909,11 @@ select {
     .products-grid,
     #featuredProductsGrid {
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 0.6rem;
+        gap: 0.3rem; /* تم تقليل من 0.6rem إلى 0.3rem */
     }
 
     .product-card {
-        padding: 0.6rem;
+        padding: 0.4rem; /* تم تقليل من 0.6rem إلى 0.4rem */
     }
 
     .product-image {
@@ -872,6 +941,26 @@ select {
         width: 100%;
         padding: 0.6rem;
         font-size: 12px;
+    }
+
+    /* نتائج البحث للموبايل */
+    .search-result-item {
+        padding: 0.4rem;
+        min-height: 70px;
+    }
+
+    .search-result-image {
+        width: 50px;
+        height: 50px;
+        margin-left: 0.4rem;
+    }
+
+    .search-result-name {
+        font-size: 0.8rem;
+    }
+
+    .search-result-price {
+        font-size: 0.75rem;
     }
 
     .modal-content {
@@ -924,7 +1013,7 @@ select {
 /* تحسينات للشاشات الصغيرة جداً */
 @media (max-width: 480px) {
     .container {
-        padding: 0; /* إزالة الحواف تماماً */
+        padding: 0;
     }
 
     .header {
@@ -985,11 +1074,11 @@ select {
     .products-grid,
     #featuredProductsGrid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.5rem;
+        gap: 0.2rem; /* تم تقليل من 0.5rem إلى 0.2rem */
     }
 
     .product-card {
-        padding: 0.5rem;
+        padding: 0.3rem; /* تم تقليل من 0.5rem إلى 0.3rem */
     }
 
     .product-image {
@@ -1007,6 +1096,26 @@ select {
     .add-to-cart-btn, .buy-now-btn {
         padding: 0.5rem;
         font-size: 11px;
+    }
+
+    /* نتائج البحث للشاشات الصغيرة */
+    .search-result-item {
+        padding: 0.3rem;
+        min-height: 60px;
+    }
+
+    .search-result-image {
+        width: 45px;
+        height: 45px;
+        margin-left: 0.3rem;
+    }
+
+    .search-result-name {
+        font-size: 0.75rem;
+    }
+
+    .search-result-price {
+        font-size: 0.7rem;
     }
 
     .modal-content {
@@ -1035,6 +1144,7 @@ select {
     .products-grid,
     #featuredProductsGrid {
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 0.5rem; /* تم تقليل من القيمة الأصلية */
     }
 
     .categories-grid {
