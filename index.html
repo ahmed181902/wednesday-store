@@ -1,100 +1,889 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>Wednesday Store | متجر الأربعاء</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- خطوط وهوية بصرية -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-  <style>
-    :root {
-      --main: #23272e;
-      --gold: #ffd700;
-      --white: #fff;
-      --gray: #f8f9fa;
-      --dark: #222;
-      --accent: #e74c3c;
-      --success: #27ae60;
-      --radius: 14px;
-      --transition: 0.2s;
-      --font: 'Cairo', Arial, sans-serif;
-    }
-    body {font-family: var(--font); background: var(--gray); margin: 0; color: var(--dark);}
-    header {background: var(--main); color: var(--white); padding: 1rem 0; display: flex; align-items: center; justify-content: space-between;}
-    .logo {display: flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: bold;}
-    .logo svg {width: 38px; height: 38px; background: var(--gold); border-radius: 50%; padding: 6px;}
-    nav {display: flex; gap: 18px;}
-    nav a {color: #fff; text-decoration: none; font-weight: 500; font-size: 1rem; padding: 8px 18px; border-radius: 22px;}
-    nav a.active, nav a:hover {background: var(--gold); color: var(--main);}
-    .lang-switch {background: none; border: none; color: var(--gold); font-weight: bold; font-size: 1rem; cursor: pointer;}
-    .cart-btn {background: var(--white); color: var(--main); border: none; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; position: relative; margin-left: 18px; cursor: pointer;}
-    .cart-btn .cart-count {position: absolute; top: 5px; left: 8px; background: var(--accent); color: #fff; border-radius: 50%; width: 18px; height: 18px; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; font-weight: bold;}
-    .social-links {display: flex; gap: 10px; margin-right: 10px;}
-    .social-links a {color: #fff; font-size: 1.3rem;}
-    .social-links a:hover {color: var(--gold);}
-    .container {max-width: 1200px; margin: 0 auto; padding: 24px 16px;}
-    .section-title {font-size: 1.4rem; color: var(--main); margin-bottom: 24px; border-right: 6px solid var(--gold); padding-right: 12px; font-weight: bold;}
-    .categories-list {display: flex; gap: 12px; margin-bottom: 18px; flex-wrap: wrap;}
-    .categories-list button {background: var(--main); color: #fff; border: none; border-radius: 18px; padding: 8px 20px; font-size: 1rem; cursor: pointer;}
-    .categories-list button.active, .categories-list button:hover {background: var(--gold); color: var(--main);}
-    .products-grid {display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 22px; margin-bottom: 32px;}
-    .product-card {background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(35,39,46,0.07); padding: 18px; text-align: center;}
-    .product-card img {width: 100px; height: 100px; object-fit: cover; border-radius: 8px; margin-bottom: 8px; border: 1px solid #eee;}
-    .product-card .cat {background: var(--gray); color: var(--main); border-radius: 12px; padding: 4px 14px; display: inline-block; font-size: 0.95rem; margin-bottom: 5px;}
-    .product-card .name {font-weight: bold; font-size: 1.1rem; color: var(--main); margin-bottom: 4px;}
-    .product-card .price {color: #25d366; font-size: 1.2rem; margin-bottom: 4px; display: inline-block;}
-    .product-card .old-price {color: #888; text-decoration: line-through; font-size: 1rem; margin-left: 8px; display: inline-block;}
-    .product-card .discount-badge {background: var(--accent); color: #fff; border-radius: 8px; padding: 2px 10px; font-size: 0.95rem; display: inline-block; margin-right: 6px; margin-bottom: 3px;}
-    .product-card .offer-badge {background: var(--gold); color: var(--main); border-radius: 8px; padding: 2px 10px; font-size: 0.93rem; display: inline-block; margin-bottom: 3px; margin-right: 6px;}
-    .product-card .desc {color: #555; font-size: 0.98rem; margin-bottom: 8px; min-height: 36px;}
-    .product-card button {background: var(--main); color: #fff; border: none; border-radius: 8px; padding: 8px 22px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 8px;}
-    .product-card button:hover {background: var(--gold); color: var(--main);}
-    footer {text-align:center;padding:24px 0;color:#888;}
-    /* لوحة التحكم */
-    .dashboard {display: flex; min-height: 100vh;}
-    .sidebar {width: 230px; background: var(--main); color: var(--white); padding: 32px 0 0 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh;}
-    .sidebar .logo {font-size: 1.5rem; font-weight: bold; margin-bottom: 36px; letter-spacing: 1px; display: flex; align-items: center; gap: 10px;}
-    .sidebar .logo svg {width: 32px; height: 32px; background: var(--gold); border-radius: 50%; padding: 4px;}
-    .sidebar nav {display: flex; flex-direction: column; gap: 16px; width: 100%;}
-    .sidebar nav button {background: none; border: none; color: var(--white); font-size: 1.1rem; padding: 12px 0 12px 24px; text-align: right; width: 100%; cursor: pointer; transition: background 0.2s; border-right: 4px solid transparent;}
-    .sidebar nav button.active, .sidebar nav button:hover {background: var(--gold); color: var(--main); border-right: 4px solid var(--accent);}
-    .sidebar .lang-btn {margin-top: 60px; background: var(--gold); color: var(--main); border: none; border-radius: 8px; padding: 8px 20px; font-weight: bold; font-size: 1rem; cursor: pointer;}
-    .main-content {flex: 1; padding: 36px 24px; background: var(--gray); min-height: 100vh; position: relative;}
-    .topbar {display: flex; justify-content: flex-end; align-items: center; gap: 16px; margin-bottom: 28px;}
-    .topbar .user {background: var(--gold); color: var(--main); padding: 7px 18px; border-radius: 20px; font-weight: bold; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;}
-    .topbar .logout {background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 7px 18px; font-size: 1rem; cursor: pointer; margin-right: 8px;}
-    .section-title {font-size: 1.4rem; color: var(--main); margin-bottom: 22px; border-right: 5px solid var(--gold); padding-right: 10px; font-weight: bold;}
-    .products-table {width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(35,39,46,0.07);}
-    .products-table th, .products-table td {padding: 12px 10px; border-bottom: 1px solid #eee; text-align: center; font-size: 1.05rem;}
-    .products-table th {background: var(--gray); color: var(--main);}
-    .products-table img {width: 46px; height: 46px; border-radius: 8px; object-fit: cover; border: 1px solid #eee;}
-    .add-btn {background: var(--success); color: #fff; border: none; border-radius: 8px; padding: 10px 22px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-bottom: 18px; margin-top: 8px;}
-    .add-btn:hover {background: var(--main); color: var(--gold);}
-    .edit-btn, .del-btn {background: var(--main); color: #fff; border: none; border-radius: 6px; padding: 5px 14px; font-size: 1rem; cursor: pointer; margin: 0 3px;}
-    .edit-btn:hover {background: var(--gold); color: var(--main);}
-    .del-btn {background: var(--accent);}
-    .del-btn:hover {background: #a93226;}
-    .modal {position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; z-index: 1000;}
-    .modal-content {background: #fff; border-radius: 14px; padding: 32px 28px; min-width: 340px; max-width: 98vw; box-shadow: 0 2px 24px rgba(0,0,0,0.13); position: relative;}
-    .modal-content label {display: block; margin: 14px 0 5px 0;}
-    .modal-content input, .modal-content select, .modal-content textarea {width: 100%; padding: 8px; border-radius: 7px; border: 1px solid #ccc; margin-bottom: 6px; font-size: 1rem;}
-    .modal-content .img-preview {width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 1px solid #eee; margin-bottom: 8px; display: block;}
-    .close-modal {position: absolute; top: 12px; left: 18px; background: none; border: none; font-size: 1.2rem; color: #888; cursor: pointer;}
-    .success-msg, .error-msg {margin: 12px 0 0 0; padding: 10px; border-radius: 8px; font-weight: bold;}
-    .success-msg {background: #eafaf1; color: #27ae60;}
-    .error-msg {background: #fdecea; color: #e74c3c;}
-    @media (max-width: 900px) {.products-grid {grid-template-columns: repeat(auto-fit,minmax(170px,1fr));} .container {padding: 12px 2px;}}
-    @media (max-width: 900px) {.dashboard {flex-direction: column;} .sidebar {width: 100%; min-height: unset; flex-direction: row; justify-content: space-between; padding: 16px 0;} .main-content {padding: 18px 5px;}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wednesday Store - اكسسوارات الموبايل والجيمنج والكابلات</title>
+    <meta name="description" content="متجر Wednesday Store للاكسسوارات - اكسسوارات الموبايل والجيمنج والكابلات بأفضل الأسعار">
+    <meta name="keywords" content="اكسسوارات موبايل, جيمنج, كابلات, Wednesday Store">
+    
+    <!-- الخطوط -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- ملفات CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- تصميم السلة والبحث التفاعلي والتحسينات -->
+    <style>
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            padding: 10px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+        
+        .cart-icon:hover {
+            background: #5a67d8;
+            transform: scale(1.1);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* تحسين البحث التفاعلي */
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 50px 12px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-btn {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-btn:hover {
+            background: #5a67d8;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* قائمة نتائج البحث التفاعلية */
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+            margin-top: 5px;
+        }
+
+        .search-results.show {
+            display: block;
+            animation: fadeInDown 0.3s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            border-bottom: 1px solid #f8f9fa;
+        }
+
+        .search-result-item:hover,
+        .search-result-item.highlighted {
+            background-color: #f8f9fa;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-left: 12px;
+            flex-shrink: 0;
+        }
+
+        .search-result-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .search-result-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 4px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .search-result-description {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 4px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .search-result-price {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 0.9rem;
+        }
+
+        .search-result-category {
+            background: #e9ecef;
+            color: #495057;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            margin-right: 8px;
+        }
+
+        .search-no-results {
+            padding: 20px;
+            text-align: center;
+            color: #666;
+        }
+
+        .search-no-results i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            opacity: 0.5;
+        }
+
+        .search-loading {
+            padding: 20px;
+            text-align: center;
+            color: #667eea;
+        }
+
+        .search-loading i {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* تمييز النص المطابق */
+        .highlight {
+            background-color: #fff3cd;
+            color: #856404;
+            font-weight: bold;
+            padding: 1px 2px;
+            border-radius: 2px;
+        }
+
+        /* تحسين شريط السكرول للنتائج */
+        .search-results::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .search-results::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .search-results::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 3px;
+        }
+
+        .search-results::-webkit-scrollbar-thumb:hover {
+            background: #5a67d8;
+        }
+        
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+        }
+        
+        .cart-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            gap: 1rem;
+        }
+        
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cart-item-price {
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+        
+        .quantity-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-btn:hover {
+            background: #5a67d8;
+        }
+        
+        .quantity-display {
+            background: #f8f9fa;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-weight: bold;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .remove-item {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .remove-item:hover {
+            background: #c82333;
+        }
+        
+        .cart-total {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .cart-total-amount {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .cart-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .cart-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .cart-btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .cart-btn-primary:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+        
+        .cart-btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .cart-btn-secondary:hover {
+            background: #545b62;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+        
+        .empty-cart i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* تحسين أزرار المنتجات */
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-direction: column;
+        }
+
+        .add-to-cart-btn, .buy-now-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .add-to-cart-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .add-to-cart-btn:hover {
+            background: linear-gradient(135deg, #218838 0%, #1e7e34 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+        }
+
+        .add-to-cart-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .buy-now-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .buy-now-btn:hover {
+            background: linear-gradient(135deg, #5a67d8 0%, #6c5ce7 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .buy-now-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        /* تأثير الموجة عند الضغط */
+        .add-to-cart-btn::before, .buy-now-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: width 0.6s, height 0.6s;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .add-to-cart-btn:active::before, .buy-now-btn:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .add-to-cart-btn span, .buy-now-btn span,
+        .add-to-cart-btn i, .buy-now-btn i {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* حالة الأزرار المعطلة */
+        .add-to-cart-btn:disabled, .buy-now-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .add-to-cart-btn:disabled:hover, .buy-now-btn:disabled:hover {
+            background: #6c757d;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* تحسين السكرول لنافذة الطلب */
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* تحسين شريط السكرول */
+        .modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 4px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb:hover {
+            background: #5a67d8;
+        }
+
+        /* تحسين للشاشات الكبيرة */
+        @media (min-width: 768px) {
+            .product-actions {
+                flex-direction: row;
+            }
+            
+            .add-to-cart-btn, .buy-now-btn {
+                flex: 1;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* تحسين للشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .cart-content {
+                padding: 1rem;
+                margin: 1rem;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cart-actions {
+                flex-direction: column;
+            }
+
+            .product-actions {
+                gap: 0.3rem;
+            }
+
+            .add-to-cart-btn, .buy-now-btn {
+                padding: 0.7rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .search-container {
+                max-width: 100%;
+                margin: 0.5rem 0;
+            }
+
+            .search-results {
+                max-height: 300px;
+            }
+
+            .search-result-item {
+                padding: 10px;
+            }
+
+            .search-result-image {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div id="app"></div>
-  <script>
-    // نظام متكامل: المتجر ولوحة التحكم (هاش روتينج)
-    // ... الكود البرمجي الطويل (تم إرساله لك سابقًا في الردود السابقة) ...
-    // يمكنك طلب نسخة الكود الكاملة لجميع الوظائف (واجهة + إدارة + تحميل الهوية البصرية)
-    // أو طلب شرح لأي جزء محدد أو تخصيص إضافي (ربط قاعدة بيانات، هوية بصرية احترافية جاهزة للتحميل، إلخ).
-  </script>
+    <!-- الهيدر -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-store"></i>
+                    Wednesday Store
+                </a>
+                
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="ابحث عن المنتجات..." id="searchInput" autocomplete="off">
+                    <button class="search-btn" id="searchBtn" aria-label="بحث">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    
+                    <!-- قائمة نتائج البحث التفاعلية -->
+                    <div class="search-results" id="searchResults">
+                        <!-- سيتم إضافة النتائج هنا تلقائياً -->
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <!-- أيقونة السلة -->
+                    <div class="cart-icon" id="cartIcon" title="سلة التسوق">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61578187973897" target="_blank" rel="noopener" title="فيسبوك" aria-label="فيسبوك">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/wednesdaystore2025/" target="_blank" rel="noopener" title="انستجرام" aria-label="انستجرام">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/01013154821" target="_blank" rel="noopener" title="واتساب" aria-label="واتساب">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- التصنيفات -->
+    <section class="categories-section">
+        <div class="container">
+            <h2 class="section-title">التصنيفات</h2>
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- سيتم تحميل التصنيفات هنا -->
+            </div>
+        </div>
+    </section>
+
+    <!-- عروض الأربعاء -->
+    <section class="offers-section" id="wednesdayOffers">
+        <div class="container">
+            <div class="offer-banner">
+                <h2 class="offer-title">🔥 عروض الأربعاء الحصرية</h2>
+                <p class="offer-subtitle">خصومات تصل إلى 50% على منتجات مختارة</p>
+                <div class="countdown-timer" id="countdownTimer">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-label">يوم</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">ساعة</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">دقيقة</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">ثانية</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- المنتجات المميزة -->
+    <section class="products-section" id="featuredProducts">
+        <div class="container">
+            <h2 class="section-title">المنتجات المميزة</h2>
+            <div class="products-grid" id="featuredProductsGrid">
+                <!-- سيتم تحميل المنتجات المميزة هنا -->
+            </div>
+        </div>
+    </section>
+
+    <!-- جميع المنتجات -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">جميع المنتجات</h2>
+            <div class="products-grid" id="productsGrid">
+                <!-- سيتم تحميل المنتجات هنا -->
+            </div>
+            
+            <div id="noProductsMessage" class="hidden" style="text-align: center; padding: 2rem; color: #666;">
+                <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                <p>لا توجد منتجات متاحة حالياً</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Wednesday Store</h3>
+                    <p>متجرك الموثوق لاكسسوارات الموبايل والجيمنج والكابلات</p>
+                    <p>نوفر لك أفضل المنتجات بأسعار تنافسية</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-phone"></i> 01013154821</p>
+                    <a href="https://wa.me/01013154821" rel="noopener"><i class="fab fa-whatsapp"></i> واتساب</a>
+                    <a href="https://www.facebook.com/profile.php?id=61578187973897" rel="noopener"><i class="fab fa-facebook"></i> فيسبوك</a>
+                    <a href="https://www.instagram.com/wednesdaystore2025/" rel="noopener"><i class="fab fa-instagram"></i> انستجرام</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>معلومات الطلب</h3>
+                    <p><i class="fas fa-truck"></i> الدفع عند الاستلام</p>
+                    <p><i class="fas fa-clock"></i> خدمة عملاء 24/7</p>
+                    <p><i class="fas fa-shield-alt"></i> ضمان على جميع المنتجات</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wednesday Store. جميع الحقوق محفوظة.</p>
+                <!-- الزر السري للوحة التحكم -->
+                <div style="margin-top: 10px;">
+                    <button id="adminAccessBtn" style="background: none; border: none; color: #666; font-size: 12px; cursor: pointer; opacity: 0.3; transition: opacity 0.3s ease;" title="لوحة التحكم" aria-label="الوصول للوحة التحكم">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- نافذة السلة المنبثقة -->
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-content">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="margin: 0; color: #667eea;">
+                    <i class="fas fa-shopping-cart"></i>
+                    سلة التسوق
+                </h2>
+                <button id="closeCartModal" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #666;" aria-label="إغلاق">&times;</button>
+            </div>
+            
+            <div id="cartItems">
+                <!-- سيتم إضافة منتجات السلة هنا -->
+            </div>
+            
+            <div id="emptyCartMessage" class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>سلة التسوق فارغة</p>
+                <p style="font-size: 0.9rem; opacity: 0.7;">أضف بعض المنتجات لتبدأ التسوق</p>
+            </div>
+            
+            <div id="cartSummary" class="hidden">
+                <div class="cart-total">
+                    <div style="margin-bottom: 0.5rem;">إجمالي السلة:</div>
+                    <div class="cart-total-amount" id="cartTotalAmount">0.00 جنيه</div>
+                </div>
+                
+                <div class="cart-actions">
+                    <button class="cart-btn cart-btn-primary" id="checkoutBtn">
+                        <i class="fas fa-check"></i>
+                        إتمام الطلب
+                    </button>
+                    <button class="cart-btn cart-btn-secondary" id="clearCartBtn">
+                        <i class="fas fa-trash"></i>
+                        إفراغ السلة
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة الطلب المنبثقة -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal" aria-label="إغلاق">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 1.5rem; color: #667eea;">
+                <i class="fas fa-shopping-cart"></i>
+                تأكيد الطلب
+            </h2>
+            
+            <div id="orderProductInfo" style="background: #f8f9fa; padding: 1rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                <!-- سيتم إضافة معلومات المنتجات هنا -->
+            </div>
+            
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="customerName">
+                        <i class="fas fa-user"></i>
+                        الاسم الكامل *
+                    </label>
+                    <input type="text" id="customerName" name="customerName" required autocomplete="name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerPhone">
+                        <i class="fas fa-phone"></i>
+                        رقم الهاتف *
+                    </label>
+                    <input type="tel" id="customerPhone" name="customerPhone" required placeholder="01xxxxxxxxx" autocomplete="tel">
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerAddress">
+                        <i class="fas fa-map-marker-alt"></i>
+                        العنوان بالتفصيل *
+                    </label>
+                    <textarea id="customerAddress" name="customerAddress" required placeholder="المحافظة، المدينة، الشارع، رقم المبنى..." autocomplete="address-line1"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerNotes">
+                        <i class="fas fa-sticky-note"></i>
+                        ملاحظات إضافية (اختياري)
+                    </label>
+                    <textarea id="customerNotes" name="customerNotes" placeholder="أي ملاحظات خاصة بالطلب..."></textarea>
+                </div>
+                
+                <div style="background: #e8f4fd; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+                    <p style="margin: 0; color: #0c5460;">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>طريقة الدفع:</strong> الدفع عند الاستلام
+                    </p>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-check"></i>
+                    تأكيد الطلب
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة الوصول للوحة التحكم -->
+    <div id="adminLoginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeAdminModal" aria-label="إغلاق">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 1.5rem; color: #667eea;">
+                <i class="fas fa-shield-alt"></i>
+                الوصول للوحة التحكم
+            </h2>
+            
+            <form id="quickAdminForm">
+                <div class="form-group">
+                    <label for="quickAdminPassword">
+                        <i class="fas fa-key"></i>
+                        كلمة المرور
+                    </label>
+                    <input type="password" id="quickAdminPassword" name="quickAdminPassword" required placeholder="أدخل كلمة المرور" autocomplete="current-password">
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    دخول لوحة التحكم
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- رسائل التنبيه -->
+    <div id="alertContainer" style="position: fixed; top: 20px; right: 20px; z-index: 3000; max-width: 300px;" role="alert" aria-live="polite">
+        <!-- سيتم إضافة التنبيهات هنا -->
+    </div>
+
+    <!-- تحميل الملفات -->
+    <script src="config.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
