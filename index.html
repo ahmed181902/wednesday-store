@@ -7,7 +7,7 @@
     <meta name="description" content="متجر Wednesday Store للاكسسوارات - اكسسوارات الموبايل والجيمنج والكابلات بأفضل الأسعار">
     <meta name="keywords" content="اكسسوارات موبايل, جيمنج, كابلات, Wednesday Store">
     
-    <!-- تحسينات الموبايل الجديدة -->
+    <!-- تحسينات الموبايل -->
     <meta name="theme-color" content="#667eea">
     <meta name="msapplication-navbutton-color" content="#667eea">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -277,6 +277,139 @@
 
         .search-results::-webkit-scrollbar-thumb:hover {
             background: #5a67d8;
+        }
+
+        /* تنويه العروض الحصرية الجديد */
+        .special-notice-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .special-notice-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-50px) translateY(-50px); }
+            100% { transform: translateX(50px) translateY(50px); }
+        }
+
+        .notice-banner {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .notice-icon {
+            font-size: 3rem;
+            color: #ffd700;
+            animation: pulse 2s infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .notice-content {
+            flex: 1;
+        }
+
+        .notice-title {
+            font-size: 1.6rem;
+            margin-bottom: 0.6rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .notice-subtitle {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .notice-features {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .feature-item {
+            background: rgba(255,255,255,0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* تحسينات للموبايل */
+        @media (max-width: 768px) {
+            .notice-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .notice-icon {
+                font-size: 2.5rem;
+            }
+
+            .notice-title {
+                font-size: 1.3rem;
+            }
+
+            .notice-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .notice-features {
+                justify-content: center;
+                gap: 0.8rem;
+            }
+
+            .feature-item {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .special-notice-section {
+                padding: 1rem 0;
+            }
+
+            .notice-title {
+                font-size: 1.1rem;
+            }
+
+            .notice-subtitle {
+                font-size: 0.8rem;
+            }
+
+            .notice-features {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .feature-item {
+                font-size: 0.7rem;
+            }
         }
         
         .cart-modal {
@@ -850,28 +983,21 @@
         </div>
     </section>
 
-    <!-- عروض الأربعاء -->
-    <section class="offers-section" id="wednesdayOffers">
+    <!-- تنويه العروض الحصرية الجديد -->
+    <section class="special-notice-section">
         <div class="container">
-            <div class="offer-banner">
-                <h2 class="offer-title">🔥 عروض الأربعاء الحصرية</h2>
-                <p class="offer-subtitle">خصومات تصل إلى 50% على منتجات مختارة</p>
-                <div class="countdown-timer" id="countdownTimer">
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="days">00</span>
-                        <span class="countdown-label">يوم</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="hours">00</span>
-                        <span class="countdown-label">ساعة</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="minutes">00</span>
-                        <span class="countdown-label">دقيقة</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="seconds">00</span>
-                        <span class="countdown-label">ثانية</span>
+            <div class="notice-banner">
+                <div class="notice-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="notice-content">
+                    <h2 class="notice-title">🎉 عروض حصرية كل يوم أربعاء</h2>
+                    <p class="notice-subtitle">خصومات مميزة وعروض لا تُقاوم تنتظرك كل أسبوع في Wednesday Store</p>
+                    <div class="notice-features">
+                        <span class="feature-item">✨ خصومات تصل إلى 50%</span>
+                        <span class="feature-item">🎁 عروض حصرية</span>
+                        <span class="feature-item">⚡ لفترة محدودة</span>
+                        <span class="feature-item">🔥 منتجات مختارة</span>
                     </div>
                 </div>
             </div>
