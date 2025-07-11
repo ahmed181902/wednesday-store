@@ -34,7 +34,7 @@
     <!-- ملفات CSS -->
     <link rel="stylesheet" href="styles.css">
     
-    <!-- تصميم السلة والبحث التفاعلي والتحسينات -->
+    <!-- تصميم السلة والبحث التفاعلي مع إصلاح عرض النتائج -->
     <style>
         .cart-icon {
             position: relative;
@@ -74,7 +74,7 @@
             min-width: 22px;
         }
 
-        /* تحسين البحث التفاعلي للموبايل */
+        /* تحسين البحث التفاعلي مع إصلاح العرض */
         .search-container {
             position: relative;
             flex: 1;
@@ -125,7 +125,7 @@
             transform: translateY(-50%) scale(1.1);
         }
 
-        /* قائمة نتائج البحث التفاعلية محسّنة للموبايل */
+        /* قائمة نتائج البحث مع إصلاح العرض */
         .search-results {
             position: absolute;
             top: 100%;
@@ -135,11 +135,12 @@
             border: 1px solid #e9ecef;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            max-height: 70vh;
+            max-height: 400px;
             overflow-y: auto;
             z-index: 1000;
             display: none;
             margin-top: 5px;
+            width: 100%;
         }
 
         .search-results.show {
@@ -161,11 +162,13 @@
         .search-result-item {
             display: flex;
             align-items: center;
-            padding: 15px;
+            padding: 12px 15px;
             cursor: pointer;
             transition: background-color 0.2s ease;
             border-bottom: 1px solid #f8f9fa;
             min-height: 60px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .search-result-item:hover,
@@ -178,67 +181,71 @@
         }
 
         .search-result-image {
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
             object-fit: cover;
             border-radius: 8px;
-            margin-left: 15px;
+            margin-left: 12px;
             flex-shrink: 0;
         }
 
         .search-result-info {
             flex: 1;
             min-width: 0;
+            max-width: calc(100% - 80px);
         }
 
         .search-result-name {
             font-weight: bold;
             color: #333;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            font-size: 16px;
+            font-size: 14px;
+            line-height: 1.3;
         }
 
         .search-result-description {
-            font-size: 14px;
+            font-size: 12px;
             color: #666;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            line-height: 1.2;
         }
 
         .search-result-price {
             font-weight: bold;
             color: #667eea;
-            font-size: 15px;
+            font-size: 13px;
         }
 
         .search-result-category {
             background: #e9ecef;
             color: #495057;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            margin-right: 8px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 10px;
+            margin-right: 6px;
+            display: inline-block;
         }
 
         .search-no-results {
-            padding: 30px;
+            padding: 20px;
             text-align: center;
             color: #666;
         }
 
         .search-no-results i {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            font-size: 2rem;
+            margin-bottom: 10px;
             opacity: 0.5;
         }
 
         .search-loading {
-            padding: 30px;
+            padding: 20px;
             text-align: center;
             color: #667eea;
         }
@@ -257,13 +264,13 @@
             background-color: #fff3cd;
             color: #856404;
             font-weight: bold;
-            padding: 2px 4px;
-            border-radius: 3px;
+            padding: 1px 2px;
+            border-radius: 2px;
         }
 
         /* تحسين شريط السكرول للنتائج */
         .search-results::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
 
         .search-results::-webkit-scrollbar-track {
@@ -272,144 +279,11 @@
 
         .search-results::-webkit-scrollbar-thumb {
             background: #667eea;
-            border-radius: 4px;
+            border-radius: 3px;
         }
 
         .search-results::-webkit-scrollbar-thumb:hover {
             background: #5a67d8;
-        }
-
-        /* تنويه العروض الحصرية الجديد */
-        .special-notice-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.5rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .special-notice-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateX(-50px) translateY(-50px); }
-            100% { transform: translateX(50px) translateY(50px); }
-        }
-
-        .notice-banner {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .notice-icon {
-            font-size: 3rem;
-            color: #ffd700;
-            animation: pulse 2s infinite;
-            flex-shrink: 0;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        .notice-content {
-            flex: 1;
-        }
-
-        .notice-title {
-            font-size: 1.6rem;
-            margin-bottom: 0.6rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .notice-subtitle {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-
-        .notice-features {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .feature-item {
-            background: rgba(255,255,255,0.2);
-            padding: 0.4rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        /* تحسينات للموبايل */
-        @media (max-width: 768px) {
-            .notice-banner {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-
-            .notice-icon {
-                font-size: 2.5rem;
-            }
-
-            .notice-title {
-                font-size: 1.3rem;
-            }
-
-            .notice-subtitle {
-                font-size: 0.9rem;
-            }
-
-            .notice-features {
-                justify-content: center;
-                gap: 0.8rem;
-            }
-
-            .feature-item {
-                font-size: 0.75rem;
-                padding: 0.3rem 0.6rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .special-notice-section {
-                padding: 1rem 0;
-            }
-
-            .notice-title {
-                font-size: 1.1rem;
-            }
-
-            .notice-subtitle {
-                font-size: 0.8rem;
-            }
-
-            .notice-features {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.5rem;
-            }
-
-            .feature-item {
-                font-size: 0.7rem;
-            }
         }
         
         .cart-modal {
@@ -743,6 +617,35 @@
                 justify-content: center;
             }
 
+            /* تحسين نتائج البحث للموبايل */
+            .search-results {
+                max-height: 300px;
+                border-radius: 12px;
+            }
+
+            .search-result-item {
+                padding: 10px;
+                min-height: 60px;
+            }
+
+            .search-result-image {
+                width: 45px;
+                height: 45px;
+                margin-left: 10px;
+            }
+
+            .search-result-name {
+                font-size: 13px;
+            }
+
+            .search-result-description {
+                font-size: 11px;
+            }
+
+            .search-result-price {
+                font-size: 12px;
+            }
+
             /* تحسين السلة */
             .cart-content {
                 padding: 1.5rem;
@@ -781,42 +684,6 @@
                 padding: 1.2rem;
                 font-size: 16px;
                 min-height: 54px;
-            }
-
-            /* تحسين البحث */
-            .search-input {
-                font-size: 16px;
-                padding: 16px 60px 16px 20px;
-            }
-
-            .search-btn {
-                width: 44px;
-                height: 44px;
-                left: 8px;
-            }
-
-            .search-results {
-                max-height: 60vh;
-                border-radius: 12px;
-            }
-
-            .search-result-item {
-                padding: 12px;
-                min-height: 70px;
-            }
-
-            .search-result-image {
-                width: 50px;
-                height: 50px;
-                margin-left: 12px;
-            }
-
-            .search-result-name {
-                font-size: 15px;
-            }
-
-            .search-result-description {
-                font-size: 13px;
             }
 
             /* تحسين النوافذ المنبثقة */
@@ -879,6 +746,29 @@
         @media (max-width: 480px) {
             .search-input {
                 padding: 14px 55px 14px 16px;
+            }
+
+            .search-results {
+                max-height: 250px;
+            }
+
+            .search-result-item {
+                padding: 8px;
+                min-height: 50px;
+            }
+
+            .search-result-image {
+                width: 40px;
+                height: 40px;
+                margin-left: 8px;
+            }
+
+            .search-result-name {
+                font-size: 12px;
+            }
+
+            .search-result-description {
+                font-size: 10px;
             }
 
             .cart-content {
@@ -964,7 +854,7 @@
                         <i class="fas fa-search"></i>
                     </button>
                     
-                    <!-- قائمة نتائج البحث التفاعلية -->
+                    <!-- قائمة نتائج البحث التفاعلية مع العرض المُصحح -->
                     <div class="search-results" id="searchResults">
                         <!-- سيتم إضافة النتائج هنا تلقائياً -->
                     </div>
@@ -983,21 +873,28 @@
         </div>
     </section>
 
-    <!-- تنويه العروض الحصرية الجديد -->
-    <section class="special-notice-section">
+    <!-- عروض الأربعاء -->
+    <section class="offers-section" id="wednesdayOffers">
         <div class="container">
-            <div class="notice-banner">
-                <div class="notice-icon">
-                    <i class="fas fa-star"></i>
-                </div>
-                <div class="notice-content">
-                    <h2 class="notice-title">🎉 عروض حصرية كل يوم أربعاء</h2>
-                    <p class="notice-subtitle">خصومات مميزة وعروض لا تُقاوم تنتظرك كل أسبوع في Wednesday Store</p>
-                    <div class="notice-features">
-                        <span class="feature-item">✨ خصومات تصل إلى 50%</span>
-                        <span class="feature-item">🎁 عروض حصرية</span>
-                        <span class="feature-item">⚡ لفترة محدودة</span>
-                        <span class="feature-item">🔥 منتجات مختارة</span>
+            <div class="offer-banner">
+                <h2 class="offer-title">🔥 عروض الأربعاء الحصرية</h2>
+                <p class="offer-subtitle">خصومات تصل إلى 50% على منتجات مختارة</p>
+                <div class="countdown-timer" id="countdownTimer">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-label">يوم</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">ساعة</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">دقيقة</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">ثانية</span>
                     </div>
                 </div>
             </div>
