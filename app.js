@@ -17,7 +17,6 @@ const App = {
             
             await this.loadData();
             this.setupEventListeners();
-            this.setupCountdownTimer();
             this.loadCartFromStorage(); // تحميل السلة من التخزين المحلي
             this.updateCartDisplay();
             
@@ -54,7 +53,7 @@ const App = {
         }
     },
 
-    // === وظائف البحث التفاعلي الجديدة ===
+    // === وظائف البحث التفاعلي ===
 
     // البحث الفوري في المنتجات
     performInstantSearch(query) {
@@ -921,48 +920,6 @@ ${products}
         if (activeCard) {
             activeCard.classList.add('active');
         }
-    },
-
-    // إعداد عداد الوقت
-    setupCountdownTimer() {
-        const updateCountdown = () => {
-            const now = new Date();
-            const currentDay = now.getDay();
-            
-            let nextWednesday = new Date();
-            const daysUntilWednesday = (3 - currentDay + 7) % 7;
-            
-            if (daysUntilWednesday === 0 && now.getHours() < 23) {
-                nextWednesday.setHours(23, 59, 59, 999);
-            } else {
-                nextWednesday.setDate(now.getDate() + (daysUntilWednesday || 7));
-                nextWednesday.setHours(23, 59, 59, 999);
-            }
-
-            const timeLeft = nextWednesday - now;
-            
-            if (timeLeft > 0) {
-                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-                const elements = {
-                    days: document.getElementById('days'),
-                    hours: document.getElementById('hours'),
-                    minutes: document.getElementById('minutes'),
-                    seconds: document.getElementById('seconds')
-                };
-
-                if (elements.days) elements.days.textContent = days.toString().padStart(2, '0');
-                if (elements.hours) elements.hours.textContent = hours.toString().padStart(2, '0');
-                if (elements.minutes) elements.minutes.textContent = minutes.toString().padStart(2, '0');
-                if (elements.seconds) elements.seconds.textContent = seconds.toString().padStart(2, '0');
-            }
-        };
-
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
     },
 
     // إعداد الوصول للوحة التحكم
