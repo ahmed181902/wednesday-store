@@ -43,11 +43,11 @@ select {
     appearance: none;
 }
 
-/* الحاوي الرئيسي مع حواف صغيرة جداً */
+/* الحاوي الرئيسي مع حواف مقللة بشكل كبير */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 0.3rem;
+    padding: 0 0.05rem; /* تم تقليل الحواف من 0.3rem إلى 0.05rem */
 }
 
 /* الهيدر محسّن ومصغّر */
@@ -734,7 +734,7 @@ select {
 /* تحسينات الموبايل المتقدمة */
 @media (max-width: 768px) {
     .container {
-        padding: 0 0.2rem;
+        padding: 0 0.05rem; /* تم تقليل من 0.2rem إلى 0.05rem */
     }
 
     .header {
@@ -924,7 +924,7 @@ select {
 /* تحسينات للشاشات الصغيرة جداً */
 @media (max-width: 480px) {
     .container {
-        padding: 0 0.1rem;
+        padding: 0 0.02rem; /* تم تقليل من 0.1rem إلى 0.02rem */
     }
 
     .header {
