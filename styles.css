@@ -494,3 +494,54 @@ select {
     transform: none;
     box-shadow: none;
 }
+
+/* تحسينات الشاشات الصغيرة جدًا */
+@media (max-width: 768px) {
+    .special-notice-section {
+        padding: 2rem 0; /* التأكد من المساحة الأكبر */
+    }
+
+    .notice-banner {
+        padding: 0 1rem;
+    }
+
+    .notice-icon {
+        font-size: 3rem; /* تصغير الأيقونة على الشاشات الصغيرة */
+    }
+
+    .notice-title {
+        font-size: 2rem; /* تصغير النص العنوان */
+    }
+
+    .notice-subtitle {
+        font-size: 1.2rem; /* تصغير النص الفرعي */
+    }
+
+    .notice-features {
+        justify-content: center;
+        gap: 1rem; /* زيادة المسافة بين العناصر */
+    }
+
+    .feature-item {
+        font-size: 1rem; /* تصغير حجم الخط */
+        padding: 0.8rem 1.4rem;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr); /* عرض عمودي للمنتجات */
+    }
+
+    .product-card {
+        max-width: 220px;
+        min-width: 180px;
+    }
+
+    .product-image {
+        height: 130px;
+    }
+
+    .product-actions {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}
