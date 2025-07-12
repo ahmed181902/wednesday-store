@@ -1,4 +1,4 @@
-// التطبيق الرئيسي مع سلة التسوق والبحث التفاعلي ووظيفة الواتساب
+// التطبيق الرئيسي مع سلة التسوق والبحث التفاعلي ووظيفة الواتساب (بدون العداد)
 const App = {
     // المتغيرات العامة
     currentCategory: 'all',
@@ -97,7 +97,7 @@ const App = {
             searchResults.innerHTML = products.map((product, index) => {
                 const highlightedName = this.highlightSearchTerm(product.name_ar, searchTerm);
                 const highlightedDesc = this.highlightSearchTerm(
-                    product.description_ar.substring(0, 60) + (product.description_ar.length > 60 ? '...' : ''), 
+                    product.description_ar.substring(0, 50) + (product.description_ar.length > 50 ? '...' : ''), 
                     searchTerm
                 );
                 
@@ -107,10 +107,10 @@ const App = {
                         <div class="search-result-info">
                             <div class="search-result-name">${highlightedName}</div>
                             <div class="search-result-description">${highlightedDesc}</div>
-                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 4px;">
+                            <div style="display: flex; align-items: center; gap: 0.4rem; margin-top: 3px;">
                                 <span class="search-result-price">${Utils.formatPrice(product.price)}</span>
                                 ${product.categories ? `<span class="search-result-category">${product.categories.name_ar}</span>` : ''}
-                                ${!product.in_stock ? '<span style="color: #dc3545; font-size: 0.75rem;">نفذ من المخزن</span>' : ''}
+                                ${!product.in_stock ? '<span style="color: #dc3545; font-size: 0.7rem;">نفذ من المخزن</span>' : ''}
                             </div>
                         </div>
                     </div>
@@ -578,21 +578,21 @@ const App = {
         const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         
         orderProductInfo.innerHTML = `
-            <h4 style="margin-bottom: 1rem;">منتجات الطلب:</h4>
+            <h4 style="margin-bottom: 0.8rem; font-size: 1.1rem;">منتجات الطلب:</h4>
             ${items.map(item => `
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; padding: 0.5rem; background: white; border-radius: 5px;">
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <img src="${item.image}" alt="${item.name}" style="width: 40px; height: 40px; object-fit: cover; border-radius: 5px;">
-                        <span>${item.name}</span>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; padding: 0.4rem; background: white; border-radius: 4px;">
+                    <div style="display: flex; align-items: center; gap: 0.4rem;">
+                        <img src="${item.image}" alt="${item.name}" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;">
+                        <span style="font-size: 13px;">${item.name}</span>
                     </div>
                     <div style="text-align: left;">
-                        <div style="font-weight: bold; color: #667eea;">${Utils.formatPrice(item.price)}</div>
-                        <div style="font-size: 0.9rem; color: #666;">الكمية: ${item.quantity}</div>
+                        <div style="font-weight: bold; color: #667eea; font-size: 13px;">${Utils.formatPrice(item.price)}</div>
+                        <div style="font-size: 11px; color: #666;">الكمية: ${item.quantity}</div>
                     </div>
                 </div>
             `).join('')}
-            <div style="border-top: 2px solid #667eea; padding-top: 1rem; margin-top: 1rem; text-align: center;">
-                <div style="font-size: 1.2rem; font-weight: bold; color: #667eea;">
+            <div style="border-top: 2px solid #667eea; padding-top: 0.8rem; margin-top: 0.8rem; text-align: center;">
+                <div style="font-size: 1.1rem; font-weight: bold; color: #667eea;">
                     الإجمالي: ${Utils.formatPrice(total)}
                 </div>
             </div>
@@ -1000,8 +1000,8 @@ ${products}
         alertElement.setAttribute('role', 'alert');
         alertElement.innerHTML = `
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span>${message}</span>
-                <button onclick="App.closeAlert('${alertId}')" style="background: none; border: none; font-size: 18px; cursor: pointer; color: inherit;" aria-label="إغلاق">&times;</button>
+                <span style="font-size: 12px;">${message}</span>
+                <button onclick="App.closeAlert('${alertId}')" style="background: none; border: none; font-size: 16px; cursor: pointer; color: inherit; min-width: 44px; min-height: 44px;" aria-label="إغلاق">&times;</button>
             </div>
         `;
 
@@ -1009,7 +1009,7 @@ ${products}
 
         setTimeout(() => {
             this.closeAlert(alertId);
-        }, type === 'error' ? 7000 : 5000);
+        }, type === 'error' ? 6000 : 4000);
     },
 
     // إغلاق رسالة التنبيه
@@ -1048,4 +1048,4 @@ document.addEventListener('DOMContentLoaded', () => {
 // تصدير التطبيق للاستخدام العام
 window.App = App;
 
-console.log('📱 Wednesday Store App مع سلة التسوق والبحث التفاعلي ووظيفة الواتساب تم تحميله بنجاح');
+console.log('📱 Wednesday Store App مع سلة التسوق والبحث التفاعلي ووظيفة الواتساب (بدون العداد) تم تحميله بنجاح');
