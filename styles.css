@@ -333,7 +333,7 @@ select {
     border: 1px solid rgba(255,255,255,0.1);
 }
 
-/* المنتجات مصغّرة مع حل مشكلة العرض الكامل */
+/* المنتجات مصغّرة مع حل مشكلة العرض الكامل - الحل النهائي */
 .products-section {
     padding: 1rem 0;
     background: #f8f9fa;
@@ -1021,6 +1021,7 @@ select {
     .products-grid {
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
         gap: 0.3rem;
+        justify-items: center;
     }
 
     .product-card {
