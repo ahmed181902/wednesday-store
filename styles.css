@@ -1,4 +1,4 @@
-/* إعدادات عامة محسّنة مع تصغير المسافات */
+/* إعدادات عامة محسّنة مع تصغير المسافات الجانبية */
 * {
     margin: 0;
     padding: 0;
@@ -43,11 +43,11 @@ select {
     appearance: none;
 }
 
-/* الحاوي الرئيسي مع مسافات جانبية صغيرة جداً */
+/* الحاوي الرئيسي مع مسافات جانبية صغيرة */
 .container {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 0.2rem;
+    padding: 0 0.3rem;
 }
 
 /* الهيدر مصغّر */
@@ -88,7 +88,7 @@ select {
     font-size: 1.4rem;
 }
 
-/* خانة البحث مصغّرة */
+/* خانة البحث محسّنة */
 .search-container {
     position: relative;
     flex: 1;
@@ -149,7 +149,7 @@ select {
     transform: translateY(-50%) scale(1.1);
 }
 
-/* أيقونات التواصل مصغّرة */
+/* أيقونات التواصل محسّنة */
 .header-actions {
     display: flex;
     align-items: center;
@@ -180,7 +180,7 @@ select {
     transform: translateY(-2px);
 }
 
-/* التصنيفات مصغّرة */
+/* التصنيفات محسّنة */
 .categories-section {
     padding: 1rem 0;
     background: white;
@@ -209,13 +209,13 @@ select {
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 0.5rem;
+    gap: 0.6rem;
     margin-top: 1rem;
 }
 
 .category-card {
     background: white;
-    padding: 0.8rem 0.4rem;
+    padding: 0.8rem 0.6rem;
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
@@ -254,7 +254,7 @@ select {
     line-height: 1.2;
 }
 
-/* عروض الأربعاء مصغّرة */
+/* عروض الأربعاء محسّنة */
 .offers-section {
     background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
     color: white;
@@ -306,7 +306,7 @@ select {
     opacity: 0.8;
 }
 
-/* المنتجات مع تكبير الحجم */
+/* المنتجات محسّنة مع أحجام مناسبة */
 .products-section {
     padding: 1.5rem 0;
     background: #f8f9fa;
@@ -318,8 +318,8 @@ select {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 0.6rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.8rem;
     margin-top: 1rem;
 }
 
@@ -353,7 +353,7 @@ select {
 }
 
 .badge {
-    padding: 0.25rem 0.5rem;
+    padding: 0.2rem 0.5rem;
     border-radius: 12px;
     font-size: 0.7rem;
     font-weight: bold;
@@ -382,10 +382,10 @@ select {
 
 .product-image {
     width: 100%;
-    height: 180px;
+    height: 160px;
     object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
     transition: transform 0.3s ease;
 }
 
@@ -398,9 +398,9 @@ select {
 }
 
 .product-name {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     color: #333;
     line-height: 1.3;
     display: -webkit-box;
@@ -411,9 +411,9 @@ select {
 
 .product-description {
     color: #666;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
     line-height: 1.4;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -421,7 +421,7 @@ select {
 }
 
 .product-price {
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
 }
 
 .current-price {
@@ -431,22 +431,22 @@ select {
 }
 
 .original-price {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #999;
     text-decoration: line-through;
-    margin-right: 0.4rem;
+    margin-right: 0.3rem;
 }
 
-/* أزرار المنتجات محسّنة */
+/* أزرار المنتجات محسّنة مع نص واضح */
 .product-actions {
     display: flex;
     gap: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 0.8rem;
 }
 
 .add-to-cart-btn, .buy-now-btn {
     flex: 1;
-    padding: 0.8rem;
+    padding: 0.7rem 0.5rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -493,7 +493,7 @@ select {
     box-shadow: none;
 }
 
-/* الفوتر مصغّر */
+/* الفوتر محسّن */
 .footer {
     background: #2c3e50;
     color: white;
@@ -502,21 +502,21 @@ select {
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
 }
 
 .footer-section h3 {
     color: #667eea;
     margin-bottom: 0.6rem;
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 .footer-section p {
     margin-bottom: 0.3rem;
     line-height: 1.4;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
 }
 
 .footer-section a {
@@ -525,10 +525,10 @@ select {
     transition: color 0.3s ease;
     display: block;
     margin-bottom: 0.3rem;
-    min-height: 32px;
+    min-height: 36px;
     display: flex;
     align-items: center;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
 }
 
 .footer-section a:hover {
@@ -537,7 +537,7 @@ select {
 
 .footer-section i {
     margin-left: 0.3rem;
-    width: 14px;
+    width: 16px;
 }
 
 .footer-bottom {
@@ -545,10 +545,10 @@ select {
     padding-top: 0.6rem;
     text-align: center;
     color: #bdc3c7;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
 }
 
-/* النوافذ المنبثقة مصغّرة */
+/* النوافذ المنبثقة محسّنة */
 .modal {
     display: none;
     position: fixed;
@@ -567,10 +567,10 @@ select {
     left: 50%;
     transform: translate(-50%, -50%);
     background: white;
-    padding: 1rem;
+    padding: 1.2rem;
     border-radius: 10px;
-    max-width: 480px;
-    width: 95%;
+    max-width: 500px;
+    width: 90%;
     max-height: 80vh;
     overflow-y: auto;
     box-shadow: 0 10px 40px rgba(0,0,0,0.2);
@@ -578,14 +578,14 @@ select {
 
 .close {
     position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
-    font-size: 18px;
+    top: 0.6rem;
+    left: 0.6rem;
+    font-size: 20px;
     font-weight: bold;
     color: #999;
     cursor: pointer;
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -600,7 +600,7 @@ select {
     background: #f8f9fa;
 }
 
-/* النماذج مصغّرة */
+/* النماذج محسّنة */
 .form-group {
     margin-bottom: 1rem;
 }
@@ -674,14 +674,14 @@ select {
     transform: none;
 }
 
-/* رسائل التنبيه مصغّرة */
+/* رسائل التنبيه محسّنة */
 .alert {
     padding: 0.6rem 1rem;
     border-radius: 6px;
     margin-bottom: 0.6rem;
     font-weight: 500;
     font-size: 13px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     animation: slideInRight 0.3s ease;
 }
 
@@ -732,7 +732,7 @@ select {
 @media (max-width: 768px) {
     /* الحاوي الرئيسي */
     .container {
-        padding: 0 0.15rem;
+        padding: 0 0.2rem;
     }
 
     /* الهيدر */
@@ -766,7 +766,7 @@ select {
     }
 
     .social-links {
-        gap: 0.6rem;
+        gap: 0.5rem;
     }
 
     .social-links a {
@@ -787,11 +787,11 @@ select {
 
     .categories-grid {
         grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
-        gap: 0.4rem;
+        gap: 0.5rem;
     }
 
     .category-card {
-        padding: 0.6rem 0.3rem;
+        padding: 0.6rem 0.4rem;
         min-height: 60px;
     }
 
@@ -831,7 +831,7 @@ select {
     }
 
     .countdown-label {
-        font-size: 0.6rem;
+        font-size: 0.65rem;
     }
 
     /* المنتجات */
@@ -840,8 +840,8 @@ select {
     }
 
     .products-grid {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 0.4rem;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 0.6rem;
     }
 
     .product-card {
@@ -849,11 +849,11 @@ select {
     }
 
     .product-image {
-        height: 150px;
+        height: 130px;
     }
 
     .product-name {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .product-description {
@@ -861,35 +861,35 @@ select {
     }
 
     .current-price {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     .product-actions {
         flex-direction: column;
-        gap: 0.4rem;
+        gap: 0.6rem;
     }
 
     .add-to-cart-btn, .buy-now-btn {
         width: 100%;
-        padding: 0.7rem;
-        font-size: 12px;
-        min-height: 36px;
+        padding: 0.8rem;
+        font-size: 13px;
+        min-height: 38px;
     }
 
     /* النوافذ المنبثقة */
     .modal-content {
-        width: 98%;
-        margin: 0.2rem;
-        padding: 0.8rem;
+        width: 95%;
+        margin: 0.5rem;
+        padding: 1rem;
         max-height: 85vh;
     }
 
     .close {
-        top: 0.3rem;
-        left: 0.3rem;
-        width: 24px;
-        height: 24px;
-        font-size: 16px;
+        top: 0.4rem;
+        left: 0.4rem;
+        width: 28px;
+        height: 28px;
+        font-size: 18px;
     }
 
     /* النماذج */
@@ -906,30 +906,30 @@ select {
 
     .submit-btn {
         padding: 0.7rem;
-        font-size: 13px;
+        font-size: 14px;
     }
 
     /* الفوتر */
     .footer {
-        padding: 1rem 0 0.6rem;
+        padding: 1.2rem 0 0.6rem;
     }
 
     .footer-content {
         grid-template-columns: 1fr;
-        gap: 0.8rem;
+        gap: 1rem;
         text-align: center;
     }
 
     .footer-section a {
         justify-content: center;
-        min-height: 30px;
+        min-height: 32px;
     }
 }
 
 /* تحسينات للشاشات الصغيرة جداً */
 @media (max-width: 480px) {
     .container {
-        padding: 0 0.1rem;
+        padding: 0 0.15rem;
     }
 
     .header {
@@ -953,11 +953,11 @@ select {
 
     .categories-grid {
         grid-template-columns: repeat(4, 1fr);
-        gap: 0.3rem;
+        gap: 0.4rem;
     }
 
     .category-card {
-        padding: 0.5rem 0.2rem;
+        padding: 0.5rem 0.3rem;
         min-height: 55px;
     }
 
@@ -989,35 +989,35 @@ select {
 
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.3rem;
+        gap: 0.5rem;
     }
 
     .product-card {
-        padding: 0.4rem;
+        padding: 0.5rem;
     }
 
     .product-image {
-        height: 120px;
+        height: 110px;
     }
 
     .product-name {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 
     .current-price {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .add-to-cart-btn, .buy-now-btn {
-        padding: 0.6rem;
-        font-size: 11px;
-        min-height: 32px;
+        padding: 0.7rem;
+        font-size: 12px;
+        min-height: 36px;
     }
 
     .modal-content {
-        width: 99%;
-        margin: 0.1rem;
-        padding: 0.6rem;
+        width: 96%;
+        margin: 0.3rem;
+        padding: 0.8rem;
     }
 
     .form-group input,
@@ -1027,18 +1027,18 @@ select {
 
     .submit-btn {
         padding: 0.6rem;
-        font-size: 12px;
+        font-size: 13px;
     }
 }
 
 /* تحسينات للشاشات الكبيرة */
 @media (min-width: 1200px) {
     .container {
-        max-width: 1600px;
+        max-width: 1300px;
     }
 
     .products-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
 
     .categories-grid {
@@ -1075,7 +1075,7 @@ a:focus {
 /* إخفاء شريط التمرير في بعض المتصفحات */
 .modal-content::-webkit-scrollbar,
 .search-results::-webkit-scrollbar {
-    width: 4px;
+    width: 5px;
 }
 
 .modal-content::-webkit-scrollbar-track,
