@@ -1,4 +1,4 @@
-/* إعدادات عامة محسّنة مع توزيع كامل للشاشة */
+/* إعدادات عامة محسّنة مع أحجام مصغّرة وحواف مقللة */
 * {
     margin: 0;
     padding: 0;
@@ -43,18 +43,17 @@ select {
     appearance: none;
 }
 
-/* الحاوي الرئيسي يستغل عرض الشاشة الكامل */
+/* الحاوي الرئيسي مع حواف مقللة وتوسيط */
 .container {
-    max-width: 100vw;
-    width: 100%;
-    margin: 0;
-    padding: 0 0.1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0.05rem;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
 }
 
-/* الهيدر يستغل العرض الكامل */
+/* الهيدر مصغّر */
 .header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -63,22 +62,22 @@ select {
     position: sticky;
     top: 0;
     z-index: 100;
-    width: 100vw;
+    width: 100%;
 }
 
 .header-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.3rem;
-    width: 100%;
-    margin: 0;
-    padding: 0 0.2rem;
+    gap: 0.4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0.1rem;
 }
 
 .logo {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
     color: white;
     text-decoration: none;
@@ -93,23 +92,23 @@ select {
 }
 
 .logo i {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
-/* خانة البحث تستغل المساحة المتاحة */
+/* خانة البحث مصغّرة */
 .search-container {
     position: relative;
     flex: 1;
-    max-width: none;
-    min-width: 200px;
+    max-width: 350px;
+    min-width: 180px;
 }
 
 .search-input {
     width: 100%;
-    padding: 5px 30px 5px 8px;
+    padding: 5px 28px 5px 8px;
     border: 2px solid rgba(255,255,255,0.2);
-    border-radius: 16px;
-    font-size: 13px;
+    border-radius: 14px;
+    font-size: 12px;
     background: rgba(255,255,255,0.1);
     color: white;
     transition: all 0.3s ease;
@@ -141,16 +140,16 @@ select {
     color: white;
     border: none;
     border-radius: 50%;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 36px;
-    min-height: 36px;
-    font-size: 10px;
+    min-width: 32px;
+    min-height: 32px;
+    font-size: 9px;
 }
 
 .search-btn:hover {
@@ -158,11 +157,11 @@ select {
     transform: translateY(-50%) scale(1.1);
 }
 
-/* أيقونات التواصل */
+/* أيقونات التواصل مصغّرة */
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 0.2rem;
+    gap: 0.3rem;
 }
 
 .social-links {
@@ -172,13 +171,13 @@ select {
 
 .social-links a {
     color: white;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     transition: all 0.3s ease;
     padding: 3px;
     border-radius: 50%;
     background: rgba(255,255,255,0.1);
-    min-width: 26px;
-    min-height: 26px;
+    min-width: 24px;
+    min-height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -189,11 +188,11 @@ select {
     transform: translateY(-2px);
 }
 
-/* التصنيفات تستغل العرض الكامل */
+/* التصنيفات مصغّرة مع توزيع أفضل */
 .categories-section {
-    padding: 0.5rem 0;
+    padding: 0.6rem 0;
     background: white;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -201,9 +200,9 @@ select {
 
 .section-title {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #333;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
     position: relative;
 }
 
@@ -213,7 +212,7 @@ select {
     bottom: -3px;
     left: 50%;
     transform: translateX(-50%);
-    width: 30px;
+    width: 25px;
     height: 2px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 1px;
@@ -221,24 +220,27 @@ select {
 
 .categories-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 0.2rem;
-    margin-top: 0.4rem;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+    justify-items: center;
+    max-width: 800px;
     width: 100%;
-    padding: 0 0.2rem;
+    padding: 0 0.1rem;
 }
 
 .category-card {
     background: white;
-    padding: 0.3rem 0.2rem;
+    padding: 0.4rem 0.3rem;
     border-radius: 6px;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 2px 6px rgba(0,0,0,0.06);
     border: 2px solid transparent;
-    min-height: 45px;
+    min-height: 40px;
     width: 100%;
+    max-width: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -258,26 +260,26 @@ select {
 }
 
 .category-icon {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 0.1rem;
     display: block;
 }
 
 .category-card h3 {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: 600;
     margin: 0;
     line-height: 1.2;
 }
 
-/* تنويه العروض يستغل العرض الكامل */
+/* تنويه العروض مصغّر */
 .special-notice-section {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    padding: 0.5rem 0;
+    padding: 0.6rem 0;
     position: relative;
     overflow: hidden;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -301,15 +303,15 @@ select {
 .notice-banner {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    width: 100%;
+    gap: 0.6rem;
+    max-width: 600px;
     position: relative;
     z-index: 2;
-    padding: 0 0.2rem;
+    padding: 0 0.1rem;
 }
 
 .notice-icon {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: #ffd700;
     animation: pulse 2s infinite;
     flex-shrink: 0;
@@ -325,20 +327,20 @@ select {
 }
 
 .notice-title {
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-bottom: 0.2rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .notice-subtitle {
-    font-size: 0.75rem;
-    margin-bottom: 0.3rem;
+    font-size: 0.7rem;
+    margin-bottom: 0.4rem;
     opacity: 0.9;
 }
 
 .notice-features {
     display: flex;
-    gap: 0.2rem;
+    gap: 0.3rem;
     flex-wrap: wrap;
 }
 
@@ -346,16 +348,16 @@ select {
     background: rgba(255,255,255,0.2);
     padding: 0.15rem 0.3rem;
     border-radius: 6px;
-    font-size: 0.55rem;
+    font-size: 0.5rem;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.1);
 }
 
-/* المنتجات تستغل العرض الكامل */
+/* المنتجات مصغّرة مع حل مشكلة العرض الكامل */
 .products-section {
-    padding: 0.6rem 0;
+    padding: 0.8rem 0;
     background: #f8f9fa;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -365,13 +367,17 @@ select {
     background: white;
 }
 
+/* الحل الصحيح لمشكلة عرض المنتج بحجم الشاشة الكاملة */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 0.2rem;
-    margin-top: 0.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.3rem;
+    margin-top: 0.6rem;
+    justify-items: center;
+    align-items: start;
+    max-width: 1200px;
     width: 100%;
-    padding: 0 0.2rem;
+    padding: 0 0.1rem;
 }
 
 .product-card {
@@ -381,8 +387,10 @@ select {
     box-shadow: 0 2px 6px rgba(0,0,0,0.06);
     transition: all 0.3s ease;
     position: relative;
-    padding: 0.3rem;
+    padding: 0.4rem;
     width: 100%;
+    max-width: 200px;
+    min-width: 160px;
 }
 
 .product-card:hover {
@@ -396,8 +404,8 @@ select {
 
 .product-badges {
     position: absolute;
-    top: 0.2rem;
-    right: 0.2rem;
+    top: 0.3rem;
+    right: 0.3rem;
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
@@ -405,9 +413,9 @@ select {
 }
 
 .badge {
-    padding: 0.05rem 0.2rem;
+    padding: 0.1rem 0.3rem;
     border-radius: 4px;
-    font-size: 0.55rem;
+    font-size: 0.5rem;
     font-weight: bold;
     text-align: center;
 }
@@ -434,7 +442,7 @@ select {
 
 .product-image {
     width: 100%;
-    height: 80px;
+    height: 90px;
     object-fit: cover;
     border-radius: 4px;
     margin-bottom: 0.3rem;
@@ -450,7 +458,7 @@ select {
 }
 
 .product-name {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: bold;
     margin-bottom: 0.2rem;
     color: #333;
@@ -465,7 +473,7 @@ select {
     color: #666;
     margin-bottom: 0.3rem;
     line-height: 1.3;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -473,27 +481,27 @@ select {
 }
 
 .product-price {
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.4rem;
 }
 
 .current-price {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: bold;
     color: #667eea;
 }
 
 .original-price {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     color: #999;
     text-decoration: line-through;
-    margin-right: 0.1rem;
+    margin-right: 0.2rem;
 }
 
-/* أزرار المنتجات */
+/* أزرار المنتجات مصغّرة */
 .product-actions {
     display: flex;
     gap: 0.2rem;
-    margin-top: 0.3rem;
+    margin-top: 0.4rem;
 }
 
 .add-to-cart-btn, .buy-now-btn {
@@ -503,14 +511,14 @@ select {
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 8px;
+    font-size: 9px;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.1rem;
     text-decoration: none;
-    min-height: 22px;
+    min-height: 24px;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -545,31 +553,33 @@ select {
     box-shadow: none;
 }
 
-/* الفوتر يستغل العرض الكامل */
+/* الفوتر مصغّر */
 .footer {
     background: #2c3e50;
     color: white;
-    padding: 0.8rem 0 0.3rem;
-    width: 100vw;
+    padding: 1rem 0 0.4rem;
+    width: 100%;
 }
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-    width: 100%;
-    padding: 0 0.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 0.1rem;
 }
 
 .footer-section h3 {
     color: #667eea;
     margin-bottom: 0.3rem;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
 .footer-section p {
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.2rem;
     line-height: 1.3;
     font-size: 0.7rem;
 }
@@ -579,7 +589,7 @@ select {
     text-decoration: none;
     transition: color 0.3s ease;
     display: block;
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.2rem;
     min-height: 24px;
     display: flex;
     align-items: center;
@@ -601,12 +611,13 @@ select {
     text-align: center;
     color: #bdc3c7;
     font-size: 0.65rem;
-    width: 100%;
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
 }
 
-/* النوافذ المنبثقة */
+/* النوافذ المنبثقة مصغّرة */
 .modal {
     display: none;
     position: fixed;
@@ -627,7 +638,7 @@ select {
     background: white;
     padding: 0.8rem;
     border-radius: 6px;
-    max-width: 380px;
+    max-width: 400px;
     width: 90%;
     max-height: 80vh;
     overflow-y: auto;
@@ -636,8 +647,8 @@ select {
 
 .close {
     position: absolute;
-    top: 0.3rem;
-    left: 0.3rem;
+    top: 0.4rem;
+    left: 0.4rem;
     font-size: 16px;
     font-weight: bold;
     color: #999;
@@ -658,21 +669,21 @@ select {
     background: #f8f9fa;
 }
 
-/* النماذج */
+/* النماذج مصغّرة */
 .form-group {
     margin-bottom: 0.6rem;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.2rem;
     font-weight: bold;
     color: #333;
     font-size: 12px;
 }
 
 .form-group label i {
-    margin-left: 0.1rem;
+    margin-left: 0.2rem;
     color: #667eea;
 }
 
@@ -682,7 +693,7 @@ select {
     width: 100%;
     padding: 0.4rem;
     border: 2px solid #e9ecef;
-    border-radius: 3px;
+    border-radius: 4px;
     font-size: 12px;
     transition: border-color 0.3s ease;
     font-family: 'Cairo', sans-serif;
@@ -699,7 +710,7 @@ select {
 
 .form-group textarea {
     resize: vertical;
-    min-height: 50px;
+    min-height: 60px;
 }
 
 .submit-btn {
@@ -708,16 +719,16 @@ select {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
-    border-radius: 3px;
+    border-radius: 4px;
     font-size: 12px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    min-height: 32px;
+    min-height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.1rem;
+    gap: 0.2rem;
 }
 
 .submit-btn:hover {
@@ -732,11 +743,11 @@ select {
     transform: none;
 }
 
-/* رسائل التنبيه */
+/* رسائل التنبيه مصغّرة */
 .alert {
-    padding: 0.3rem 0.6rem;
-    border-radius: 3px;
-    margin-bottom: 0.3rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
     font-weight: 500;
     font-size: 11px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.06);
@@ -786,24 +797,24 @@ select {
     to { opacity: 1; }
 }
 
-/* تحسينات الشاشات الصغيرة مع استغلال العرض الكامل */
+/* تحسينات الشاشات الصغيرة */
 @media (max-width: 768px) {
     .container {
-        padding: 0;
+        padding: 0 0.03rem;
     }
 
     .header {
-        padding: 0.2rem 0;
+        padding: 0.25rem 0;
     }
 
     .header-content {
         flex-direction: column;
-        gap: 0.2rem;
-        padding: 0 0.1rem;
+        gap: 0.3rem;
+        padding: 0 0.05rem;
     }
 
     .logo {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
 
     .logo i {
@@ -818,15 +829,15 @@ select {
     }
 
     .search-input {
-        padding: 4px 26px 4px 6px;
-        font-size: 12px;
+        padding: 4px 24px 4px 6px;
+        font-size: 11px;
     }
 
     .search-btn {
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
         left: 2px;
-        font-size: 9px;
+        font-size: 8px;
     }
 
     .header-actions {
@@ -836,98 +847,103 @@ select {
     }
 
     .social-links {
-        gap: 0.1rem;
+        gap: 0.15rem;
     }
 
     .social-links a {
-        min-width: 22px;
-        min-height: 22px;
-        font-size: 0.75rem;
+        min-width: 20px;
+        min-height: 20px;
+        font-size: 0.7rem;
         padding: 2px;
     }
 
     .categories-section {
-        padding: 0.3rem 0;
+        padding: 0.4rem 0;
     }
 
     .section-title {
-        font-size: 0.95rem;
-        margin-bottom: 0.3rem;
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
     }
 
     .categories-grid {
-        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-        gap: 0.15rem;
-        padding: 0 0.1rem;
+        grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
+        gap: 0.2rem;
+        max-width: 100%;
+        padding: 0 0.05rem;
     }
 
     .category-card {
-        padding: 0.2rem 0.1rem;
+        padding: 0.3rem 0.2rem;
         min-height: 35px;
+        max-width: 70px;
     }
 
     .category-icon {
-        font-size: 1rem;
+        font-size: 0.9rem;
         margin-bottom: 0.05rem;
     }
 
     .category-card h3 {
-        font-size: 0.55rem;
+        font-size: 0.5rem;
     }
 
     .special-notice-section {
-        padding: 0.3rem 0;
+        padding: 0.4rem 0;
     }
 
     .notice-banner {
         flex-direction: column;
         text-align: center;
-        gap: 0.3rem;
-        padding: 0 0.1rem;
+        gap: 0.4rem;
+        padding: 0 0.05rem;
     }
 
     .notice-icon {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 
     .notice-title {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 
     .notice-subtitle {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
     }
 
     .notice-features {
         justify-content: center;
-        gap: 0.1rem;
+        gap: 0.2rem;
     }
 
     .feature-item {
-        font-size: 0.5rem;
+        font-size: 0.45rem;
         padding: 0.1rem 0.2rem;
     }
 
     .products-section {
-        padding: 0.4rem 0;
+        padding: 0.6rem 0;
     }
 
     .products-grid {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 0.1rem;
-        padding: 0 0.1rem;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 0.2rem;
+        max-width: 100%;
+        padding: 0 0.05rem;
     }
 
     .product-card {
-        padding: 0.2rem;
+        padding: 0.3rem;
+        max-width: 150px;
+        min-width: 120px;
     }
 
     .product-image {
-        height: 65px;
+        height: 70px;
     }
 
     .product-name {
-        font-size: 0.6rem;
+        font-size: 0.65rem;
     }
 
     .product-description {
@@ -935,30 +951,30 @@ select {
     }
 
     .current-price {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
 
     .product-actions {
         flex-direction: column;
-        gap: 0.1rem;
+        gap: 0.15rem;
     }
 
     .add-to-cart-btn, .buy-now-btn {
         width: 100%;
-        padding: 0.2rem;
-        font-size: 7px;
-        min-height: 18px;
+        padding: 0.25rem;
+        font-size: 8px;
+        min-height: 20px;
     }
 
     .footer {
-        padding: 0.5rem 0 0.2rem;
+        padding: 0.6rem 0 0.3rem;
     }
 
     .footer-content {
         grid-template-columns: 1fr;
-        gap: 0.3rem;
+        gap: 0.4rem;
         text-align: center;
-        padding: 0 0.1rem;
+        padding: 0 0.05rem;
     }
 
     .footer-section a {
@@ -967,61 +983,63 @@ select {
     }
 
     .footer-bottom {
-        padding-left: 0.1rem;
-        padding-right: 0.1rem;
+        padding-left: 0.05rem;
+        padding-right: 0.05rem;
     }
 }
 
-/* تحسينات للشاشات الصغيرة جداً مع استغلال العرض الكامل */
+/* تحسينات للشاشات الصغيرة جداً */
 @media (max-width: 480px) {
     .products-grid {
-        grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
-        gap: 0.08rem;
-        padding: 0 0.05rem;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 0.15rem;
+        padding: 0 0.03rem;
     }
 
     .product-card {
-        padding: 0.15rem;
+        padding: 0.25rem;
+        max-width: 120px;
+        min-width: 100px;
     }
 
     .product-image {
-        height: 55px;
+        height: 60px;
     }
 
     .product-name {
-        font-size: 0.55rem;
+        font-size: 0.6rem;
     }
 
     .current-price {
-        font-size: 0.65rem;
+        font-size: 0.7rem;
     }
 
     .add-to-cart-btn, .buy-now-btn {
-        padding: 0.15rem;
-        font-size: 6px;
-        min-height: 16px;
+        padding: 0.2rem;
+        font-size: 7px;
+        min-height: 18px;
     }
 }
 
-/* تحسينات للشاشات الكبيرة مع استغلال العرض الكامل */
+/* تحسينات للشاشات الكبيرة */
 @media (min-width: 1200px) {
+    .container {
+        max-width: 1400px;
+    }
+
     .products-grid {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 0.25rem;
-        padding: 0 0.3rem;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        max-width: 1400px;
     }
 
     .product-card {
-        padding: 0.4rem;
-    }
-
-    .product-image {
-        height: 90px;
+        max-width: 220px;
+        min-width: 180px;
     }
 
     .categories-grid {
-        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-        padding: 0 0.3rem;
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        max-width: 900px;
     }
 }
 
@@ -1037,7 +1055,7 @@ select {
 
 /* تحسين التمرير */
 html {
-    scroll-padding-top: 35px;
+    scroll-padding-top: 40px;
 }
 
 /* تحسين التركيز للوصولية */
