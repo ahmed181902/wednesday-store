@@ -1,4 +1,4 @@
-// التطبيق الرئيسي مع سلة التسوق والبحث التفاعلي ووظيفة الواتساب (بدون العداد)
+// التطبيق الرئيسي مع سلة التسوق والبحث التفاعلي ووظيفة الواتساب
 const App = {
     // المتغيرات العامة
     currentCategory: 'all',
@@ -17,6 +17,7 @@ const App = {
             
             await this.loadData();
             this.setupEventListeners();
+            this.setupCountdownTimer();
             this.loadCartFromStorage(); // تحميل السلة من التخزين المحلي
             this.updateCartDisplay();
             
@@ -53,7 +54,7 @@ const App = {
         }
     },
 
-    // === وظائف البحث التفاعلي ===
+    // === وظائف البحث التفاعلي الجديدة ===
 
     // البحث الفوري في المنتجات
     performInstantSearch(query) {
@@ -97,7 +98,7 @@ const App = {
             searchResults.innerHTML = products.map((product, index) => {
                 const highlightedName = this.highlightSearchTerm(product.name_ar, searchTerm);
                 const highlightedDesc = this.highlightSearchTerm(
-                    product.description_ar.substring(0, 50) + (product.description_ar.length > 50 ? '...' : ''), 
+                    product.description_ar.substring(0, 60) + (product.description_ar.length > 60 ? '...' : ''), 
                     searchTerm
                 );
                 
@@ -107,10 +108,10 @@ const App = {
                         <div class="search-result-info">
                             <div class="search-result-name">${highlightedName}</div>
                             <div class="search-result-description">${highlightedDesc}</div>
-                            <div style="display: flex; align-items: center; gap: 0.4rem; margin-top: 3px;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 4px;">
                                 <span class="search-result-price">${Utils.formatPrice(product.price)}</span>
                                 ${product.categories ? `<span class="search-result-category">${product.categories.name_ar}</span>` : ''}
-                                ${!product.in_stock ? '<span style="color: #dc3545; font-size: 0.7rem;">نفذ من المخزن</span>' : ''}
+                                ${!product.in_stock ? '<span style="color: #dc3545; font-size: 0.75rem;">نفذ من المخزن</span>' : ''}
                             </div>
                         </div>
                     </div>
@@ -578,21 +579,21 @@ const App = {
         const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         
         orderProductInfo.innerHTML = `
-            <h4 style="margin-bottom: 0.8rem; font-size: 1.1rem;">منتجات الطلب:</h4>
+            <h4 style="margin-bottom: 1rem;">منتجات الطلب:</h4>
             ${items.map(item => `
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; padding: 0.4rem; background: white; border-radius: 4px;">
-                    <div style="display: flex; align-items: center; gap: 0.4rem;">
-                        <img src="${item.image}" alt="${item.name}" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;">
-                        <span style="font-size: 13px;">${item.name}</span>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; padding: 0.5rem; background: white; border-radius: 5px;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <img src="${item.image}" alt="${item.name}" style="width: 40px; height: 40px; object-fit: cover; border-radius: 5px;">
+                        <span>${item.name}</span>
                     </div>
                     <div style="text-align: left;">
-                        <div style="font-weight: bold; color: #667eea; font-size: 13px;">${Utils.formatPrice(item.price)}</div>
-                        <div style="font-size: 11px; color: #666;">الكمية: ${item.quantity}</div>
+                        <div style="font-weight: bold; color: #667eea;">${Utils.formatPrice(item.price)}</div>
+                        <div style="font-size: 0.9rem; color: #666;">الكمية: ${item.quantity}</div>
                     </div>
                 </div>
             `).join('')}
-            <div style="border-top: 2px solid #667eea; padding-top: 0.8rem; margin-top: 0.8rem; text-align: center;">
-                <div style="font-size: 1.1rem; font-weight: bold; color: #667eea;">
+            <div style="border-top: 2px solid #667eea; padding-top: 1rem; margin-top: 1rem; text-align: center;">
+                <div style="font-size: 1.2rem; font-weight: bold; color: #667eea;">
                     الإجمالي: ${Utils.formatPrice(total)}
                 </div>
             </div>
@@ -817,6 +818,28 @@ ${products}
                 this.hideSearchResults();
             }
         });
+        // إصلاح موقع نتائج البحث
+function adjustSearchResultsPosition() {
+    const searchContainer = document.querySelector('.search-container');
+    const searchResults = document.querySelector('.search-results');
+    
+    if (searchContainer && searchResults) {
+        const rect = searchContainer.getBoundingClientRect();
+        const isMobile = window.innerWidth <= 768;
+        
+        if (isMobile) {
+            searchResults.style.top = 'calc(100% + 5px)';
+            searchResults.style.left = '0';
+            searchResults.style.right = '0';
+            searchResults.style.width = '100%';
+        }
+    }
+}
+
+// تشغيل الإصلاح عند تغيير حجم الشاشة
+window.addEventListener('resize', adjustSearchResultsPosition);
+window.addEventListener('load', adjustSearchResultsPosition);
+
 
         // أيقونة السلة
         const cartIcon = document.getElementById('cartIcon');
@@ -922,6 +945,48 @@ ${products}
         }
     },
 
+    // إعداد عداد الوقت
+    setupCountdownTimer() {
+        const updateCountdown = () => {
+            const now = new Date();
+            const currentDay = now.getDay();
+            
+            let nextWednesday = new Date();
+            const daysUntilWednesday = (3 - currentDay + 7) % 7;
+            
+            if (daysUntilWednesday === 0 && now.getHours() < 23) {
+                nextWednesday.setHours(23, 59, 59, 999);
+            } else {
+                nextWednesday.setDate(now.getDate() + (daysUntilWednesday || 7));
+                nextWednesday.setHours(23, 59, 59, 999);
+            }
+
+            const timeLeft = nextWednesday - now;
+            
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                const elements = {
+                    days: document.getElementById('days'),
+                    hours: document.getElementById('hours'),
+                    minutes: document.getElementById('minutes'),
+                    seconds: document.getElementById('seconds')
+                };
+
+                if (elements.days) elements.days.textContent = days.toString().padStart(2, '0');
+                if (elements.hours) elements.hours.textContent = hours.toString().padStart(2, '0');
+                if (elements.minutes) elements.minutes.textContent = minutes.toString().padStart(2, '0');
+                if (elements.seconds) elements.seconds.textContent = seconds.toString().padStart(2, '0');
+            }
+        };
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    },
+
     // إعداد الوصول للوحة التحكم
     setupAdminAccess() {
         const adminBtn = document.getElementById('adminAccessBtn');
@@ -1000,8 +1065,8 @@ ${products}
         alertElement.setAttribute('role', 'alert');
         alertElement.innerHTML = `
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-size: 12px;">${message}</span>
-                <button onclick="App.closeAlert('${alertId}')" style="background: none; border: none; font-size: 16px; cursor: pointer; color: inherit; min-width: 44px; min-height: 44px;" aria-label="إغلاق">&times;</button>
+                <span>${message}</span>
+                <button onclick="App.closeAlert('${alertId}')" style="background: none; border: none; font-size: 18px; cursor: pointer; color: inherit;" aria-label="إغلاق">&times;</button>
             </div>
         `;
 
@@ -1009,7 +1074,7 @@ ${products}
 
         setTimeout(() => {
             this.closeAlert(alertId);
-        }, type === 'error' ? 6000 : 4000);
+        }, type === 'error' ? 7000 : 5000);
     },
 
     // إغلاق رسالة التنبيه
@@ -1048,4 +1113,4 @@ document.addEventListener('DOMContentLoaded', () => {
 // تصدير التطبيق للاستخدام العام
 window.App = App;
 
-console.log('📱 Wednesday Store App مع سلة التسوق والبحث التفاعلي ووظيفة الواتساب (بدون العداد) تم تحميله بنجاح');
+console.log('📱 Wednesday Store App مع سلة التسوق والبحث التفاعلي ووظيفة الواتساب تم تحميله بنجاح');
