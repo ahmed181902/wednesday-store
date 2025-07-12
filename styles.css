@@ -198,15 +198,16 @@ select {
     transform: translateY(-2px);
 }
 
-/* التنويه بالعروض الحصرية يوم الأربعاء مع تصميم أوضح */
+/* التنويه بالعروض الحصرية يوم الأربعاء مع تصميم أوضح وأكثر عرض */
 .special-notice-section {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
-    padding: 1.2rem 0;
+    padding: 2rem 0; /* زيادة المساحة العمودية */
     position: relative;
     overflow: hidden;
     width: 100%;
-    text-align: center; /* تأكيد محاذاة النص في الوسط */
+    text-align: center; /* محاذاة النص في الوسط */
+    font-weight: bold;
 }
 
 .special-notice-section::before {
@@ -228,7 +229,7 @@ select {
 .notice-banner {
     display: flex;
     flex-direction: column;
-    gap: 1rem; /* زيادة المسافة بين العناصر */
+    gap: 1.5rem; /* زيادة المسافة بين العناصر */
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
@@ -237,7 +238,7 @@ select {
 }
 
 .notice-icon {
-    font-size: 3.5rem;
+    font-size: 4rem; /* زيادة حجم الأيقونة */
     color: #ffd700;
     animation: pulse 2s infinite;
     flex-shrink: 0;
@@ -245,46 +246,51 @@ select {
 
 @keyframes pulse {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    50% { transform: scale(1.2); } /* تأثير تكبير الأيقونة */
 }
 
 .notice-content {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem; /* زيادة المسافة بين النصوص */
     width: 100%;
 }
 
 .notice-title {
-    font-size: 2.4rem; /* زيادة حجم النص ليظهر بوضوح */
-    font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    line-height: 1.2;
+    font-size: 2.5rem; /* زيادة حجم النص ليظهر بوضوح أكبر */
+    font-weight: 800;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    line-height: 1.4;
 }
 
 .notice-subtitle {
-    font-size: 1.4rem; /* جعل الحجم أكبر لزيادة الوضوح */
+    font-size: 1.5rem; /* زيادة حجم النص */
     opacity: 0.95;
-    line-height: 1.4;
-    font-weight: 500;
+    line-height: 1.6;
+    font-weight: 600;
 }
 
 .notice-features {
     display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+    flex-direction: column; /* جعل العناصر تظهر بشكل عمودي */
+    gap: 0.8rem;
+    justify-content: center;
+    align-items: center;
     width: 100%;
 }
 
 .feature-item {
     background: rgba(255,255,255,0.25);
-    padding: 0.6rem 1rem;
+    padding: 0.8rem 1.2rem;
     border-radius: 18px;
-    font-size: 1rem; /* زيادة الحجم للتوضيح */
+    font-size: 1rem; /* زيادة حجم النص */
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.2);
     font-weight: 600;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    width: auto;
+    min-width: 150px;
+    text-align: center;
 }
 
 /* المنتجات 4 في السطر مع مسافات مصغّرة */
