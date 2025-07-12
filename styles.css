@@ -1,4 +1,4 @@
-/* إعدادات عامة احترافية مع توزيع مثالي */
+/* إعدادات عامة احترافية مع توزيع متناسق */
 * {
     margin: 0;
     padding: 0;
@@ -58,15 +58,15 @@ select {
     appearance: none;
 }
 
-/* الحاوي الرئيسي مع استغلال أمثل للمساحة */
+/* الحاوي الرئيسي مع توسيط احترافي */
 .container {
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
     width: 100%;
 }
 
-/* الهيدر مع تصميم احترافي وتقليل الهوامش */
+/* الهيدر مع تصميم احترافي ومسافات مصغّرة */
 .header {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
@@ -83,6 +83,8 @@ select {
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 0 1rem;
 }
 
@@ -193,9 +195,9 @@ select {
     transform: translateY(-2px);
 }
 
-/* التصنيفات في سطر واحد مع تقليل الهوامش */
+/* التصنيفات في سطر واحد مع مسافات مصغّرة */
 .categories-section {
-    padding: 1.2rem 0;
+    padding: 1rem 0;
     background: white;
     width: 100%;
 }
@@ -204,7 +206,7 @@ select {
     text-align: center;
     font-size: 1.6rem;
     color: var(--dark-color);
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     position: relative;
     font-weight: 600;
 }
@@ -224,12 +226,13 @@ select {
 /* التصنيفات في سطر واحد مع تمرير أفقي */
 .categories-grid {
     display: flex;
-    gap: 0.8rem;
-    margin-top: 1rem;
+    gap: 0.6rem;
+    margin-top: 0.8rem;
     padding: 0 1rem;
     overflow-x: auto;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    justify-content: center;
 }
 
 .categories-grid::-webkit-scrollbar {
@@ -290,11 +293,11 @@ select {
     white-space: nowrap;
 }
 
-/* تنويه العروض مع تقليل الهوامش */
+/* تنويه العروض مع مسافات مصغّرة */
 .special-notice-section {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
-    padding: 1.2rem 0;
+    padding: 1rem 0;
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -320,16 +323,19 @@ select {
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 0 1rem;
     position: relative;
     z-index: 2;
 }
 
 .notice-icon {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     color: #ffd700;
     animation: pulse 2s infinite;
+    flex-shrink: 0;
 }
 
 @keyframes pulse {
@@ -340,38 +346,45 @@ select {
 .notice-content {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.8rem;
+    width: 100%;
 }
 
 .notice-title {
-    font-size: 1.3rem;
+    font-size: 2rem;
     font-weight: 700;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    line-height: 1.2;
 }
 
 .notice-subtitle {
-    font-size: 0.9rem;
-    opacity: 0.9;
+    font-size: 1.2rem;
+    opacity: 0.95;
+    line-height: 1.4;
+    font-weight: 500;
 }
 
 .notice-features {
     display: flex;
-    gap: 0.6rem;
+    gap: 1rem;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .feature-item {
-    background: rgba(255,255,255,0.2);
-    padding: 0.3rem 0.6rem;
-    border-radius: 12px;
-    font-size: 0.7rem;
+    background: rgba(255,255,255,0.25);
+    padding: 0.6rem 1rem;
+    border-radius: 18px;
+    font-size: 0.9rem;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
-/* المنتجات 4 في السطر مع تقليل الهوامش */
+/* المنتجات 4 في السطر مع مسافات مصغّرة */
 .products-section {
-    padding: 1.5rem 0;
+    padding: 1.2rem 0;
     background: var(--light-color);
     width: 100%;
 }
@@ -384,8 +397,11 @@ select {
 .products-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 0.8rem;
+    margin-top: 0.8rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0 1rem;
 }
 
@@ -568,31 +584,34 @@ select {
     box-shadow: none;
 }
 
-/* الفوتر مع تقليل الهوامش */
+/* الفوتر مع مسافات مصغّرة */
 .footer {
     background: #2c3e50;
     color: white;
-    padding: 1.5rem 0 0.8rem;
+    padding: 1.2rem 0 0.8rem;
     width: 100%;
 }
 
 .footer-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 1rem;
+    gap: 1.2rem;
+    margin-bottom: 0.8rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0 1rem;
 }
 
 .footer-section h3 {
     color: var(--primary-color);
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
     font-size: 1rem;
     font-weight: 600;
 }
 
 .footer-section p {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
     line-height: 1.5;
     font-size: 0.85rem;
 }
@@ -603,7 +622,7 @@ select {
     transition: var(--transition);
     display: flex;
     align-items: center;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
     min-height: 36px;
     font-size: 0.85rem;
 }
@@ -619,10 +638,12 @@ select {
 
 .footer-bottom {
     border-top: 1px solid #34495e;
-    padding-top: 0.8rem;
+    padding-top: 0.6rem;
     text-align: center;
     color: #bdc3c7;
     font-size: 0.8rem;
+    max-width: 1200px;
+    margin: 0 auto;
     padding-left: 1rem;
     padding-right: 1rem;
 }
@@ -681,12 +702,12 @@ select {
 
 /* النماذج مع تصميم احترافي */
 .form-group {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
     font-weight: 600;
     color: var(--dark-color);
     font-size: 14px;
@@ -725,7 +746,7 @@ select {
 
 .submit-btn {
     width: 100%;
-    padding: 0.9rem 1.5rem;
+    padding: 0.8rem 1.5rem;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
     border: none;
@@ -755,9 +776,9 @@ select {
 
 /* رسائل التنبيه مع تصميم احترافي */
 .alert {
-    padding: 0.7rem 1rem;
+    padding: 0.6rem 1rem;
     border-radius: var(--border-radius);
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
     font-weight: 500;
     font-size: 13px;
     box-shadow: var(--box-shadow);
@@ -816,9 +837,13 @@ select {
 
 /* تحسينات الشاشات الصغيرة */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 0.5rem;
+    }
+
     .header-content {
         grid-template-columns: 1fr;
-        gap: 0.8rem;
+        gap: 0.6rem;
         text-align: center;
         padding: 0 0.5rem;
     }
@@ -835,6 +860,7 @@ select {
 
     .categories-grid {
         padding: 0 0.5rem;
+        justify-content: flex-start;
     }
 
     .category-card {
@@ -850,20 +876,30 @@ select {
     }
 
     .notice-icon {
-        font-size: 2rem;
+        font-size: 2.8rem;
     }
 
     .notice-title {
-        font-size: 1.1rem;
+        font-size: 1.6rem;
+    }
+
+    .notice-subtitle {
+        font-size: 1rem;
     }
 
     .notice-features {
         justify-content: center;
+        gap: 0.8rem;
+    }
+
+    .feature-item {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
     }
 
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.8rem;
+        gap: 0.6rem;
         padding: 0 0.5rem;
     }
 
@@ -878,7 +914,7 @@ select {
 
     .product-actions {
         grid-template-columns: 1fr;
-        gap: 0.6rem;
+        gap: 0.5rem;
     }
 
     .modal-content {
@@ -900,6 +936,10 @@ select {
 
 /* تحسينات للشاشات الصغيرة جداً */
 @media (max-width: 480px) {
+    .container {
+        padding: 0 0.3rem;
+    }
+
     .header {
         padding: 0.6rem 0;
     }
@@ -917,6 +957,29 @@ select {
         padding: 0.6rem 0.3rem;
     }
 
+    .notice-banner {
+        padding: 0 0.3rem;
+    }
+
+    .notice-title {
+        font-size: 1.3rem;
+    }
+
+    .notice-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .notice-features {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+    }
+
+    .feature-item {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.6rem;
+    }
+
     .products-grid {
         grid-template-columns: 1fr;
         padding: 0 0.3rem;
@@ -927,7 +990,6 @@ select {
         min-width: auto;
     }
 
-    .notice-banner,
     .footer-content,
     .footer-bottom {
         padding: 0 0.3rem;
@@ -957,7 +1019,7 @@ select:focus,
 a:focus {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
-}
+}[1][2]
 
 /* إخفاء شريط التمرير في بعض المتصفحات */
 .modal-content::-webkit-scrollbar {
