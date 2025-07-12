@@ -1,4 +1,4 @@
-/* إعدادات عامة محسّنة مع تثبيت أحجام المنتجات */
+/* إعدادات عامة محسّنة مع تصغير المكونات وتقليل الحواف */
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +14,7 @@ html {
 
 body {
     font-family: 'Cairo', sans-serif;
-    line-height: 1.4;
+    line-height: 1.3;
     color: #333;
     background-color: #f8f9fa;
     overflow-x: hidden;
@@ -43,18 +43,18 @@ select {
     appearance: none;
 }
 
-/* الحاوي الرئيسي مع مسافات جانبية صغيرة */
+/* الحاوي الرئيسي مع حواف صغيرة جداً */
 .container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 0.2rem;
+    padding: 0 0.1rem;
 }
 
 /* الهيدر مصغّر */
 .header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    padding: 0.4rem 0;
+    padding: 0.3rem 0;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
@@ -66,11 +66,11 @@ select {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.6rem;
+    gap: 0.4rem;
 }
 
 .logo {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: white;
     text-decoration: none;
@@ -85,23 +85,23 @@ select {
 }
 
 .logo i {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
 }
 
 /* خانة البحث مصغّرة */
 .search-container {
     position: relative;
     flex: 1;
-    max-width: 400px;
-    min-width: 200px;
+    max-width: 350px;
+    min-width: 180px;
 }
 
 .search-input {
     width: 100%;
-    padding: 8px 40px 8px 14px;
+    padding: 6px 35px 6px 12px;
     border: 2px solid rgba(255,255,255,0.2);
-    border-radius: 18px;
-    font-size: 14px;
+    border-radius: 16px;
+    font-size: 13px;
     background: rgba(255,255,255,0.1);
     color: white;
     transition: all 0.3s ease;
@@ -126,15 +126,15 @@ select {
 
 .search-btn {
     position: absolute;
-    left: 4px;
+    left: 3px;
     top: 50%;
     transform: translateY(-50%);
     background: rgba(255,255,255,0.2);
     color: white;
     border: none;
     border-radius: 50%;
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
@@ -142,6 +142,7 @@ select {
     justify-content: center;
     min-width: 44px;
     min-height: 44px;
+    font-size: 11px;
 }
 
 .search-btn:hover {
@@ -153,23 +154,23 @@ select {
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.4rem;
 }
 
 .social-links {
     display: flex;
-    gap: 0.4rem;
+    gap: 0.3rem;
 }
 
 .social-links a {
     color: white;
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: all 0.3s ease;
-    padding: 4px;
+    padding: 3px;
     border-radius: 50%;
     background: rgba(255,255,255,0.1);
-    min-width: 36px;
-    min-height: 36px;
+    min-width: 32px;
+    min-height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -177,30 +178,30 @@ select {
 
 .social-links a:hover {
     background: rgba(255,255,255,0.2);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
 /* التصنيفات مصغّرة */
 .categories-section {
-    padding: 1rem 0;
+    padding: 0.8rem 0;
     background: white;
 }
 
 .section-title {
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #333;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     position: relative;
 }
 
 .section-title::after {
     content: '';
     position: absolute;
-    bottom: -6px;
+    bottom: -4px;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
+    width: 40px;
     height: 2px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 1px;
@@ -208,21 +209,21 @@ select {
 
 .categories-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 0.6rem;
-    margin-top: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0.4rem;
+    margin-top: 0.8rem;
 }
 
 .category-card {
     background: white;
-    padding: 0.8rem 0.4rem;
-    border-radius: 10px;
+    padding: 0.6rem 0.3rem;
+    border-radius: 8px;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     border: 2px solid transparent;
-    min-height: 70px;
+    min-height: 55px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -231,7 +232,7 @@ select {
 
 .category-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
     border-color: #667eea;
 }
 
@@ -242,73 +243,99 @@ select {
 }
 
 .category-icon {
-    font-size: 1.8rem;
-    margin-bottom: 0.4rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
     display: block;
 }
 
 .category-card h3 {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 600;
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.1;
 }
 
-/* عروض الأربعاء مصغّرة */
-.offers-section {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+/* تنويه العروض الحصرية */
+.special-notice-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    padding: 1.5rem 0;
-    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+    overflow: hidden;
 }
 
-.offer-banner {
-    max-width: 600px;
+.special-notice-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+    animation: float 20s infinite linear;
+}
+
+@keyframes float {
+    0% { transform: translateX(-50px) translateY(-50px); }
+    100% { transform: translateX(50px) translateY(50px); }
+}
+
+.notice-banner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 700px;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
 }
 
-.offer-title {
-    font-size: 1.6rem;
-    margin-bottom: 0.6rem;
+.notice-icon {
+    font-size: 2.2rem;
+    color: #ffd700;
+    animation: pulse 2s infinite;
+    flex-shrink: 0;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.notice-content {
+    flex: 1;
+}
+
+.notice-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-.offer-subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+.notice-subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 0.6rem;
     opacity: 0.9;
 }
 
-.countdown-timer {
+.notice-features {
     display: flex;
-    justify-content: center;
     gap: 0.6rem;
     flex-wrap: wrap;
 }
 
-.countdown-item {
+.feature-item {
     background: rgba(255,255,255,0.2);
-    padding: 0.6rem;
-    border-radius: 6px;
-    min-width: 55px;
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.65rem;
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
-.countdown-number {
-    display: block;
-    font-size: 1.3rem;
-    font-weight: bold;
-    line-height: 1;
-}
-
-.countdown-label {
-    font-size: 0.7rem;
-    opacity: 0.8;
-}
-
-/* المنتجات مع تثبيت الأحجام */
+/* المنتجات مع تثبيت الأحجام وتقليل الحواف */
 .products-section {
-    padding: 1.5rem 0;
+    padding: 1rem 0;
     background: #f8f9fa;
 }
 
@@ -319,26 +346,26 @@ select {
 /* شبكة المنتجات مع أحجام ثابتة */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 0.6rem;
-    margin-top: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.4rem;
+    margin-top: 0.8rem;
     max-width: 100%;
 }
 
 /* كروت المنتجات بأحجام ثابتة */
 .product-card {
     background: white;
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
     position: relative;
-    padding: 0.5rem;
+    padding: 0.4rem;
     /* تثبيت الأبعاد */
     width: 100%;
-    max-width: 280px;
-    min-width: 220px;
-    height: 350px;
+    max-width: 250px;
+    min-width: 200px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     justify-self: center;
@@ -346,7 +373,7 @@ select {
 
 .product-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .product-card.out-of-stock {
@@ -355,18 +382,18 @@ select {
 
 .product-badges {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
+    top: 0.4rem;
+    right: 0.4rem;
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.2rem;
     z-index: 10;
 }
 
 .badge {
-    padding: 0.2rem 0.4rem;
-    border-radius: 10px;
-    font-size: 0.65rem;
+    padding: 0.15rem 0.3rem;
+    border-radius: 8px;
+    font-size: 0.6rem;
     font-weight: bold;
     text-align: center;
 }
@@ -394,10 +421,10 @@ select {
 /* صور المنتجات بحجم ثابت */
 .product-image {
     width: 100%;
-    height: 140px;
+    height: 120px;
     object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    margin-bottom: 0.4rem;
     transition: transform 0.3s ease;
     flex-shrink: 0;
 }
@@ -416,98 +443,98 @@ select {
 }
 
 .product-name {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: bold;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
     color: #333;
-    line-height: 1.2;
+    line-height: 1.1;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    height: 2.4em;
+    height: 1.8em;
     flex-shrink: 0;
 }
 
 .product-description {
     color: #666;
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
-    font-size: 0.75rem;
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+    font-size: 0.65rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    height: 2.6em;
+    height: 1.8em;
     flex-shrink: 0;
 }
 
 .product-price {
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.4rem;
     flex-shrink: 0;
 }
 
 .current-price {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: bold;
     color: #667eea;
 }
 
 .original-price {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: #999;
     text-decoration: line-through;
-    margin-right: 0.3rem;
+    margin-right: 0.2rem;
 }
 
 /* أزرار المنتجات بحجم ثابت */
 .product-actions {
     display: flex;
-    gap: 0.3rem;
+    gap: 0.2rem;
     margin-top: auto;
     flex-shrink: 0;
 }
 
 .add-to-cart-btn, .buy-now-btn {
     flex: 1;
-    padding: 0.5rem;
+    padding: 0.4rem;
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 11px;
+    font-size: 10px;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.2rem;
     text-decoration: none;
-    height: 32px;
+    height: 28px;
     -webkit-tap-highlight-color: transparent;
 }
 
 .add-to-cart-btn {
     background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
     color: white;
-    box-shadow: 0 2px 6px rgba(40, 167, 69, 0.2);
+    box-shadow: 0 2px 5px rgba(40, 167, 69, 0.2);
 }
 
 .add-to-cart-btn:hover, .add-to-cart-btn:active {
     background: linear-gradient(135deg, #218838 0%, #1e7e34 100%);
     transform: translateY(-1px);
-    box-shadow: 0 3px 10px rgba(40, 167, 69, 0.25);
+    box-shadow: 0 3px 8px rgba(40, 167, 69, 0.25);
 }
 
 .buy-now-btn {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    box-shadow: 0 2px 6px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 2px 5px rgba(102, 126, 234, 0.2);
 }
 
 .buy-now-btn:hover, .buy-now-btn:active {
     background: linear-gradient(135deg, #5a67d8 0%, #6c5ce7 100%);
     transform: translateY(-1px);
-    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.25);
+    box-shadow: 0 3px 8px rgba(102, 126, 234, 0.25);
 }
 
 .add-to-cart-btn:disabled, .buy-now-btn:disabled {
@@ -521,26 +548,26 @@ select {
 .footer {
     background: #2c3e50;
     color: white;
-    padding: 1.5rem 0 0.8rem;
+    padding: 1.2rem 0 0.6rem;
 }
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
 }
 
 .footer-section h3 {
     color: #667eea;
-    margin-bottom: 0.6rem;
-    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
 }
 
 .footer-section p {
-    margin-bottom: 0.3rem;
-    line-height: 1.4;
-    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+    line-height: 1.3;
+    font-size: 0.75rem;
 }
 
 .footer-section a {
@@ -548,11 +575,11 @@ select {
     text-decoration: none;
     transition: color 0.3s ease;
     display: block;
-    margin-bottom: 0.3rem;
-    min-height: 32px;
+    margin-bottom: 0.2rem;
+    min-height: 30px;
     display: flex;
     align-items: center;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
 
 .footer-section a:hover {
@@ -560,16 +587,16 @@ select {
 }
 
 .footer-section i {
-    margin-left: 0.3rem;
-    width: 14px;
+    margin-left: 0.2rem;
+    width: 12px;
 }
 
 .footer-bottom {
     border-top: 1px solid #34495e;
-    padding-top: 0.6rem;
+    padding-top: 0.5rem;
     text-align: center;
     color: #bdc3c7;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
 }
 
 /* النوافذ المنبثقة مصغّرة */
@@ -592,24 +619,24 @@ select {
     transform: translate(-50%, -50%);
     background: white;
     padding: 1rem;
-    border-radius: 10px;
-    max-width: 480px;
+    border-radius: 8px;
+    max-width: 450px;
     width: 95%;
     max-height: 80vh;
     overflow-y: auto;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
 }
 
 .close {
     position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
-    font-size: 18px;
+    top: 0.4rem;
+    left: 0.4rem;
+    font-size: 16px;
     font-weight: bold;
     color: #999;
     cursor: pointer;
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -626,19 +653,19 @@ select {
 
 /* النماذج مصغّرة */
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
     font-weight: bold;
     color: #333;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .form-group label i {
-    margin-left: 0.3rem;
+    margin-left: 0.2rem;
     color: #667eea;
 }
 
@@ -646,13 +673,13 @@ select {
 .form-group textarea,
 .form-group select {
     width: 100%;
-    padding: 0.7rem;
+    padding: 0.6rem;
     border: 2px solid #e9ecef;
-    border-radius: 6px;
+    border-radius: 5px;
     font-size: 14px;
     transition: border-color 0.3s ease;
     font-family: 'Cairo', sans-serif;
-    min-height: 40px;
+    min-height: 38px;
 }
 
 .form-group input:focus,
@@ -665,21 +692,21 @@ select {
 
 .form-group textarea {
     resize: vertical;
-    min-height: 70px;
+    min-height: 60px;
 }
 
 .submit-btn {
     width: 100%;
-    padding: 0.8rem 1.2rem;
+    padding: 0.7rem 1rem;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    min-height: 42px;
+    min-height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -689,7 +716,7 @@ select {
 .submit-btn:hover {
     background: linear-gradient(135deg, #5a67d8 0%, #6c5ce7 100%);
     transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
 }
 
 .submit-btn:disabled {
@@ -700,12 +727,12 @@ select {
 
 /* رسائل التنبيه مصغّرة */
 .alert {
-    padding: 0.6rem 1rem;
-    border-radius: 6px;
-    margin-bottom: 0.6rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
     font-weight: 500;
-    font-size: 13px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    font-size: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     animation: slideInRight 0.3s ease;
 }
 
@@ -755,20 +782,20 @@ select {
 /* تحسينات الموبايل مع الحفاظ على الأحجام الثابتة */
 @media (max-width: 768px) {
     .container {
-        padding: 0 0.1rem;
+        padding: 0 0.05rem;
     }
 
     .header {
-        padding: 0.3rem 0;
+        padding: 0.2rem 0;
     }
 
     .header-content {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.4rem;
     }
 
     .logo {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .search-container {
@@ -785,61 +812,93 @@ select {
 
     /* شبكة المنتجات للموبايل مع أحجام ثابتة */
     .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 0.4rem;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 0.3rem;
     }
 
     .product-card {
-        min-width: 180px;
-        max-width: 220px;
-        height: 320px;
-        padding: 0.4rem;
+        min-width: 160px;
+        max-width: 200px;
+        height: 260px;
+        padding: 0.3rem;
     }
 
     .product-image {
-        height: 120px;
+        height: 100px;
     }
 
     .product-name {
-        font-size: 0.8rem;
-        height: 2.2em;
+        font-size: 0.75rem;
+        height: 1.6em;
     }
 
     .product-description {
-        font-size: 0.7rem;
-        height: 2.4em;
+        font-size: 0.6rem;
+        height: 1.6em;
     }
 
     .current-price {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 
     .product-actions {
         flex-direction: column;
-        gap: 0.3rem;
+        gap: 0.2rem;
     }
 
     .add-to-cart-btn, .buy-now-btn {
-        height: 28px;
-        font-size: 10px;
+        height: 24px;
+        font-size: 9px;
     }
 
     .categories-grid {
-        grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
-        gap: 0.4rem;
+        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+        gap: 0.3rem;
     }
 
     .category-card {
-        padding: 0.6rem 0.3rem;
-        min-height: 60px;
+        padding: 0.5rem 0.2rem;
+        min-height: 50px;
     }
 
     .category-icon {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .category-card h3 {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
+    }
+
+    .special-notice-section {
+        padding: 0.8rem 0;
+    }
+
+    .notice-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.6rem;
+    }
+
+    .notice-icon {
+        font-size: 1.8rem;
+    }
+
+    .notice-title {
+        font-size: 1.1rem;
+    }
+
+    .notice-subtitle {
+        font-size: 0.75rem;
+    }
+
+    .notice-features {
+        justify-content: center;
+        gap: 0.4rem;
+    }
+
+    .feature-item {
+        font-size: 0.6rem;
+        padding: 0.2rem 0.4rem;
     }
 
     .modal-content {
@@ -852,61 +911,83 @@ select {
 /* تحسينات للشاشات الصغيرة جداً */
 @media (max-width: 480px) {
     .container {
-        padding: 0 0.05rem;
+        padding: 0 0.02rem;
     }
 
     /* شبكة المنتجات للشاشات الصغيرة مع أحجام ثابتة */
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.3rem;
+        gap: 0.2rem;
     }
 
     .product-card {
-        min-width: 160px;
-        max-width: 180px;
-        height: 280px;
-        padding: 0.3rem;
+        min-width: 140px;
+        max-width: 160px;
+        height: 220px;
+        padding: 0.25rem;
     }
 
     .product-image {
-        height: 100px;
+        height: 80px;
     }
 
     .product-name {
-        font-size: 0.75rem;
-        height: 2em;
+        font-size: 0.7rem;
+        height: 1.4em;
     }
 
     .product-description {
-        font-size: 0.65rem;
-        height: 2.2em;
+        font-size: 0.55rem;
+        height: 1.4em;
     }
 
     .current-price {
-        font-size: 0.85rem;
+        font-size: 0.75rem;
     }
 
     .add-to-cart-btn, .buy-now-btn {
-        height: 26px;
-        font-size: 9px;
+        height: 22px;
+        font-size: 8px;
     }
 
     .categories-grid {
         grid-template-columns: repeat(4, 1fr);
-        gap: 0.3rem;
+        gap: 0.2rem;
     }
 
     .category-card {
-        padding: 0.5rem 0.2rem;
-        min-height: 55px;
+        padding: 0.4rem 0.15rem;
+        min-height: 45px;
     }
 
     .category-icon {
-        font-size: 1.3rem;
+        font-size: 1rem;
     }
 
     .category-card h3 {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
+    }
+
+    .special-notice-section {
+        padding: 0.6rem 0;
+    }
+
+    .notice-title {
+        font-size: 0.95rem;
+    }
+
+    .notice-subtitle {
+        font-size: 0.7rem;
+    }
+
+    .notice-features {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+    }
+
+    .feature-item {
+        font-size: 0.55rem;
     }
 }
 
@@ -917,21 +998,21 @@ select {
     }
 
     .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     }
 
     .product-card {
-        min-width: 240px;
-        max-width: 280px;
-        height: 380px;
+        min-width: 220px;
+        max-width: 260px;
+        height: 320px;
     }
 
     .product-image {
-        height: 160px;
+        height: 140px;
     }
 
     .categories-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
 }
 
@@ -946,7 +1027,7 @@ select {
 
 /* تحسين التمرير */
 html {
-    scroll-padding-top: 50px;
+    scroll-padding-top: 40px;
 }
 
 /* تحسين التركيز للوصولية */
@@ -961,17 +1042,17 @@ a:focus {
 
 /* إخفاء شريط التمرير في بعض المتصفحات */
 .modal-content::-webkit-scrollbar {
-    width: 4px;
+    width: 3px;
 }
 
 .modal-content::-webkit-scrollbar-track {
     background: #f1f1f1;
-    border-radius: 2px;
+    border-radius: 1px;
 }
 
 .modal-content::-webkit-scrollbar-thumb {
     background: #667eea;
-    border-radius: 2px;
+    border-radius: 1px;
 }
 
 .modal-content::-webkit-scrollbar-thumb:hover {
